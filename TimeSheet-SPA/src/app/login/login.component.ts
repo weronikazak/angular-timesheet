@@ -28,8 +28,5 @@ export class LoginComponent implements OnInit {
     return !!token;
   }
 
-  loggedOut() {
-    localStorage.removeItem('token');
-  }
 
 }

@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './_services/auth.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { MainDesktopComponent } from './main-desktop/main-desktop.component';
 
 @NgModule({
    declarations: [
@@ -16,7 +17,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
       NavbarComponent,
       LoginComponent,
       DashboardComponent,
-      SidebarComponent
+      SidebarComponent,
+      MainDesktopComponent
    ],
    imports: [
       BrowserModule,

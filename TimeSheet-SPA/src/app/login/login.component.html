@@ -5,31 +5,37 @@
   <form #loginForm="ngForm" class="form-signin" (ngSubmit)="login()">
 
 
-  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <h1 class="h3 mb-3 font-weight-normal">Zaloguj się</h1>
 
   <!-- has to have names. ngClasses are binding with the values in ts file -->
-  <label class="sr-only">Username</label>
+  <label class="sr-only">Nazwa użytkownika</label>
   <input type="text"class="form-control"
-    placeholder="Username" required autofocus
+    placeholder="Nazwa użytkownika" required autofocus
     name="username"
     [(ngModel)]="model.username">
 
-  <label class="sr-only">Password</label>
+  <label class="sr-only">Hasło</label>
   <input type="password" class="form-control"
    name="password"
-   placeholder="Password" required
+   placeholder="Hasło" required
    [(ngModel)]="model.password">
 
-  <div class="checkbox mb-3">
+   <label class="alert-link">
+      <a>Nie masz jeszcze konta?</a>
+   </label>
+
+  <!-- <div class="checkbox mb-3">
     <label>
-      <input type="checkbox" value="remember-me"> Remember me
+      <input type="checkbox" value="remember-me"> Zapamiętaj mnie
     </label>
-  </div>
+  </div> -->
 
   <!-- button has to have submit type -->
-  <button [disabled]="!loginForm.valid" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <button [disabled]="!loginForm.valid" class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj się</button>
 
 
   </form>
 
 </div>
+
+<app-dashboard *ngIf="loggedIn()"></app-dashboard>
