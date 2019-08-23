@@ -1,0 +1,35 @@
+<div class="container text-center text-container" *ngIf="!loggedIn()">
+
+  <!-- ngSumbit is a function of angular. so after you click submit down below,
+    you get directed to login function in ts file -->
+  <form #loginForm="ngForm" class="form-signin" (ngSubmit)="login()">
+
+
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+  <!-- has to have names. ngClasses are binding with the values in ts file -->
+  <label class="sr-only">Username</label>
+  <input type="text"class="form-control"
+    placeholder="Username" required autofocus
+    name="username"
+    [(ngModel)]="model.username">
+
+  <label class="sr-only">Password</label>
+  <input type="password" class="form-control"
+   name="password"
+   placeholder="Password" required
+   [(ngModel)]="model.password">
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+
+  <!-- button has to have submit type -->
+  <button [disabled]="!loginForm.valid" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+
+  </form>
+
+</div>

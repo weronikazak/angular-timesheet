@@ -1,0 +1,10 @@
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+}
+
+.text-container{
+    max-width: 350px;
+    margin: 0 auto;
+}
