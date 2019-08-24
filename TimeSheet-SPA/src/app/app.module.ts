@@ -11,6 +11,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainDesktopComponent } from './main-desktop/main-desktop.component';
 import { LoginOrRegisterComponent } from './login-or-register/login-or-register.component';
 import { HomeComponent } from './home/home.component';
+import { ErrorInceptorProvide } from './_services/error.interceptor';
 
 @NgModule({
    declarations: [
@@ -28,7 +29,8 @@ import { HomeComponent } from './home/home.component';
       FormsModule
    ],
    providers: [
-      AuthService
+      AuthService,
+      ErrorInceptorProvide
    ],
    bootstrap: [
       AppComponent
