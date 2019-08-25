@@ -12,6 +12,7 @@ import { MainDesktopComponent } from './main-desktop/main-desktop.component';
 import { LoginOrRegisterComponent } from './login-or-register/login-or-register.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorInceptorProvide } from './_services/error.interceptor';
+import { AlertifyService } from './_services/alertify.service';
 
 @NgModule({
    declarations: [
@@ -30,7 +31,8 @@ import { ErrorInceptorProvide } from './_services/error.interceptor';
    ],
    providers: [
       AuthService,
-      ErrorInceptorProvide
+      ErrorInceptorProvide,
+      AlertifyService
    ],
    bootstrap: [
       AppComponent

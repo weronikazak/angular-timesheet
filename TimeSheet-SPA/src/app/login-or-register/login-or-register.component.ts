@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'app-login-or-register',
@@ -11,16 +12,16 @@ export class LoginOrRegisterComponent implements OnInit {
   model: any = {};
   registrationMode = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
 
   login() {
     this.authService.login(this.model).subscribe(next => {
-      console.log('Zalogowano.');
+      this.alertify.success('Zalogowano.');
     }, error => {
-      console.log('Nie udało się zalogować.');
+      this.alertify.error('Nie udało się zalogować.');
     });
   }
 
@@ -30,10 +31,10 @@ export class LoginOrRegisterComponent implements OnInit {
 
   register() {
     this.authService.register(this.model).subscribe(() => {
-      console.log('Rejestracja się powiodła');
+      this.alertify.success('Rejestracja się powiodła');
       this.login();
     }, error => {
-      console.log(error);
+      this.alertify.error(error);
     });
   }
 

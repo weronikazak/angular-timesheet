@@ -15,8 +15,6 @@ export class HomeComponent implements OnInit {
   }
 
   loggedIn() {
-    const token = localStorage.getItem('token');
-    // !! <- sprawdza i zwraca bool. jesli token jest pusty zwraca false, jesli ma wartosc, zwraca true
-    return !!token;
+    return this.authService.loggedIn();
   }
 }
