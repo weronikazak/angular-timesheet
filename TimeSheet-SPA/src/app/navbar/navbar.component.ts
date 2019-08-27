@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertifyService } from '../_services/alertify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { AlertifyService } from '../_services/alertify.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private alertify: AlertifyService) { }
+  constructor(private alertify: AlertifyService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit {
   logOut() {
     localStorage.removeItem('token');
     this.alertify.message('Wylogowano.');
+    this.router.navigate(['/login']);
   }
 
 }

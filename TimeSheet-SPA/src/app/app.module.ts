@@ -15,6 +15,10 @@ import { ErrorInceptorProvide } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { TimepickerModule, TimepickerConfig, TimepickerActions } from 'ngx-bootstrap/timepicker';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from 'src/routes';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PicktimeDashboardComponent } from './dashboard/picktime-dashboard/picktime-dashboard.component';
 
 @NgModule({
    declarations: [
@@ -25,13 +29,16 @@ import { TimepickerModule, TimepickerConfig, TimepickerActions } from 'ngx-boots
       MainDesktopComponent,
       LoginOrRegisterComponent,
       HomeComponent,
-      MainScreenComponent
+      MainScreenComponent,
+      UserProfileComponent,
+      PicktimeDashboardComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
-      TimepickerModule.forRoot()
+      TimepickerModule.forRoot(),
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [
       AuthService,
