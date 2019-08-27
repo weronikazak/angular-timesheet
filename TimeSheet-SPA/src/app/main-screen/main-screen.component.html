@@ -1,7 +1,24 @@
-<timepicker [(ngModel)]="mytime" (isValid)="isValid = $event"></timepicker>
- 
-<pre class="alert alert-info">Time is: {{mytime}}</pre>
-<pre *ngIf="!isValid" class="alert alert-danger">Invalid time format</pre>
- 
-<button type="button" class="btn btn-primary" (click)="update()">Set to now</button>
-<button type="button" class="btn btn-danger" (click)="clear()">Clear</button>
+<div class="row">
+    <div class="col-lg-6"> 
+        <h3> FROM </h3>
+        <timepicker [(ngModel)]="mytime" (isValid)="isValid = $event"></timepicker>
+    
+        <pre class="alert alert-info">Praca zaczęta od {{mytime.getHours()}}:{{mytime.getMinutes()}}</pre>
+        <pre *ngIf="!isValid" class="alert alert-danger">Invalid time format</pre>
+        
+        <button type="button" class="btn btn-primary" (click)="update()">Set to now</button>
+        <button type="button" class="btn btn-danger" (click)="clear()">Clear</button>
+
+    </div>
+
+    <div class="col-lg-6"> 
+        <h3> TO </h3>
+        <timepicker [(ngModel)]="mytime" (isValid)="isValid = $event"></timepicker>
+    
+        <pre class="alert alert-info">Time is: {{mytime}}</pre>
+        <pre *ngIf="!isValid" class="alert alert-danger">Invalid time format</pre>
+        
+        <button type="button" class="btn btn-primary" (click)="update()">Set to now</button>
+
+    </div>
+</div>

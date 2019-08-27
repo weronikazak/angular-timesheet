@@ -31,14 +31,12 @@ import { TimepickerModule, TimepickerConfig, TimepickerActions } from 'ngx-boots
       BrowserModule,
       HttpClientModule,
       FormsModule,
-      TimepickerModule
+      TimepickerModule.forRoot()
    ],
    providers: [
       AuthService,
       ErrorInceptorProvide,
-      AlertifyService,
-      TimepickerConfig,
-      TimepickerActions
+      AlertifyService
       ],
    bootstrap: [
       AppComponent
