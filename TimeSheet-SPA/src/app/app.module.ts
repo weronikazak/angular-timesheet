@@ -13,6 +13,8 @@ import { LoginOrRegisterComponent } from './login-or-register/login-or-register.
 import { HomeComponent } from './home/home.component';
 import { ErrorInceptorProvide } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
+import { MainScreenComponent } from './main-screen/main-screen.component';
+import { TimepickerModule, TimepickerConfig, TimepickerActions } from 'ngx-bootstrap/timepicker';
 
 @NgModule({
    declarations: [
@@ -22,18 +24,22 @@ import { AlertifyService } from './_services/alertify.service';
       SidebarComponent,
       MainDesktopComponent,
       LoginOrRegisterComponent,
-      HomeComponent
+      HomeComponent,
+      MainScreenComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
-      FormsModule
+      FormsModule,
+      TimepickerModule
    ],
    providers: [
       AuthService,
       ErrorInceptorProvide,
-      AlertifyService
-   ],
+      AlertifyService,
+      TimepickerConfig,
+      TimepickerActions
+      ],
    bootstrap: [
       AppComponent
    ]
