@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component( {
   selector: 'app-picktime-dashboard',
@@ -7,24 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class PicktimeDashboardComponent implements OnInit {
-  mytime: Date | undefined = new Date();
-  isValid: boolean;
+  @Input() mytime: Date = new Date();
+  starttime: Date = new Date();
+  endtime: Date = new Date();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  update() {
+  update(timeVal: Date) {
     const time = new Date();
     const dateTime = new Date();
     time.setHours(dateTime.getHours());
     time.setMinutes(dateTime.getMinutes());
 
-    this.mytime = time;
-  }
-
-  clear() {
-    this.mytime = void 0;
+    timeVal = time;
   }
 }

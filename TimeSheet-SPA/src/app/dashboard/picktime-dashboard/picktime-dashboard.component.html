@@ -2,26 +2,64 @@
     <div class="col-lg-3"></div>
     <div class="col-lg-3"> 
         <h3> FROM </h3>
-        <timepicker [(ngModel)]="mytime" (isValid)="isValid = $event"></timepicker>
-    
-        <pre *ngIf="!isValid" class="alert alert-danger">Invalid time format</pre>
-        
-        <button type="button" class="btn btn-primary" (click)="update()">Set to now</button>
-        <button type="button" class="btn btn-danger" (click)="clear()">Clear</button>
+        <timepicker [(ngModel)]="starttime" (isValid)="isValid = $event"></timepicker>
+
+        <button type="button" class="btn btn-primary" (click)="update(starttime)">Teraz</button>
 
     </div>
 
     <div class="col-lg-3"> 
         <h3> TO </h3>
-        <timepicker [(ngModel)]="mytime" (isValid)="isValid = $event"></timepicker>
-    
-        <!-- <pre class="alert alert-info">Praca skończona o {{mytime.getHours()}}:{{mytime.getMinutes()}}</pre> -->
-        <pre *ngIf="!isValid" class="alert alert-danger">Invalid time format</pre>
-        
-        <button type="button" class="btn btn-primary" (click)="update()">Set to now</button>
+        <timepicker [(ngModel)]="endtime" (isValid)="isValid = $event"></timepicker>
+
+        <button type="button" class="btn btn-primary" (click)="update(endtime)">Teraz</button>
 
     </div>
     <div class="col-lg-3"></div>
 </div>
 
-<pre class="alert alert-info">Praca zaczęta od {{mytime.getHours()}}:{{mytime.getMinutes()}}</pre>
+<div class="alert alert-primary mt-4">
+  <!-- <h4 class="alert-heading">Oczekuje zatwierdzenia</h4> -->
+
+  <div class="row col-lg-12 text-center">
+    <div class="col-lg-1 ml-4">
+      <label> OD </label>
+      <p>{{starttime.getHours()}}:{{starttime.getMinutes()}}</p>
+    </div>
+    <div>
+        <br/>
+          <p>---</p>
+        </div>
+    <div class="col-lg-1">
+      <label>DO</label>
+        <p>{{endtime.getHours()}}:{{endtime.getMinutes()}} </p>
+      </div>
+    <div class="col-lg-2">
+      <label>CZAS PRACY</label>
+      <p>{{endtime.getHours() - starttime.getHours()}}:{{endtime.getMinutes() - starttime.getMinutes()}} </p>
+    </div>
+    <div class="col-lg-2">
+      <label>DATA</label>
+      <p> {{mytime.getUTCDate()}}.{{mytime.getUTCMonth()}}.{{mytime.getFullYear()}} </p>
+    </div>
+    <div class="col-lg-3">
+      <label>PROJEKT</label>
+      <br/>
+      <input type="text" placeholder="Nazwa projektu">
+    </div>
+    <div class="col-lg-2">
+    <br/>
+      <button class="btn btn-success btn-set"> Zatwierdź <i class="fa fa-check" aria-hidden="true"></i> </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div *ngFor="let work of works m-4"> -->
+        <div class="alert alert-light mt-4">
+            
+                <button class="btn btn-danger btn-set"> <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <h4 class="alert-heading">Zatwierdzone</h4>
+                <p>Praca zaczęta od 12:22 do 14:33</p>
+              </div>
+<!-- </div> -->

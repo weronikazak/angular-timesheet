@@ -1,0 +1,26 @@
+[
+    {
+      "ProjectName": "Avenue",
+      "CompanyName": "Conferia",
+      "ProjectStart": "2017-03-04",
+      "Deadline": "2018-05-24",
+      "IsFinished": true,
+      "SpentHours": 1.2
+    },
+    {
+      "ProjectName": "Brighton",
+      "CompanyName": "Kengen",
+      "ProjectStart": "2019-08-26",
+      "Deadline": "2014-04-26",
+      "IsFinished": false,
+      "SpentHours": 4.5
+    },
+    {
+      "ProjectName": "Medcom",
+      "CompanyName": "Kengen",
+      "ProjectStart": "2017-04-28",
+      "Deadline": "2017-06-12",
+      "IsFinished": false,
+      "SpentHours": 3
+    }
+  ]

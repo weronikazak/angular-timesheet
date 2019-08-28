@@ -15,8 +15,10 @@ export const appRoutes: Routes = [
             { path: 'desktop', component: DashboardComponent},
             { path: 'dashboard', component: PicktimeDashboardComponent},
             { path: 'user', component: UserProfileComponent},
+            // { path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
+
         ]
     },
     { path: 'login', component: LoginOrRegisterComponent},
-    { path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
+    { path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];

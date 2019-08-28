@@ -1,0 +1,9 @@
+.btn-set {
+    position: relative;
+    display: block !important;
+    float: right;
+}
+
+label {
+    border-bottom: 1px dotted white;
+}
