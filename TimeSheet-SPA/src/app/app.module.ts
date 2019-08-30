@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PicktimeDashboardComponent } from './dashboard/picktime-dashboard/picktime-dashboard.component';
+import { MdRadioModule } from '@angular/material';
 
 @NgModule({
    declarations: [
@@ -38,7 +39,8 @@ import { PicktimeDashboardComponent } from './dashboard/picktime-dashboard/pickt
       HttpClientModule,
       FormsModule,
       TimepickerModule.forRoot(),
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+      MdRadioModule 
    ],
    providers: [
       AuthService,

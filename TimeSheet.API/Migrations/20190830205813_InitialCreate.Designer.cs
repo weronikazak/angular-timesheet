@@ -9,8 +9,8 @@ using TimeSheet.API.Data;
 namespace timesheet.api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190828122155_CreatedEntities")]
-    partial class CreatedEntities
+    [Migration("20190830205813_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,7 +53,11 @@ namespace timesheet.api.Migrations
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("GroupId");
+                    b.Property<DateTime>("DateOfBirth");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Gender");
 
                     b.Property<DateTime>("LastActive");
 
@@ -63,11 +67,9 @@ namespace timesheet.api.Migrations
 
                     b.Property<byte[]>("PasswordSalt");
 
-                    b.Property<string>("Username");
+                    b.Property<string>("Surname");
 
                     b.HasKey("UserId");
-
-                    b.HasIndex("GroupId");
 
                     b.ToTable("Users");
                 });
@@ -95,6 +97,10 @@ namespace timesheet.api.Migrations
 
                     b.Property<float>("SpentHours");
 
+                    b.Property<DateTime?>("TimeEnd");
+
+                    b.Property<DateTime>("TimeStart");
+
                     b.HasKey("GroupId");
 
                     b.HasIndex("HeadOfProjectId");
@@ -102,6 +108,30 @@ namespace timesheet.api.Migrations
                     b.HasIndex("ProjectId");
 
                     b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("TimeSheet.API.Models.Worker", b =>
+                {
+                    b.Property<int>("WorkerId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("GroupId");
+
+                    b.Property<string>("Role");
+
+                    b.Property<DateTime>("TimeAdded");
+
+                    b.Property<float>("TimeSpent");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("WorkerId");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Worker");
                 });
 
             modelBuilder.Entity("TimeSheet.API.Data.Project", b =>
@@ -115,16 +145,9 @@ namespace timesheet.api.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("TimeSheet.API.Data.User", b =>
-                {
-                    b.HasOne("TimeSheet.API.Models.Group")
-                        .WithMany("Members")
-                        .HasForeignKey("GroupId");
-                });
-
             modelBuilder.Entity("TimeSheet.API.Models.Group", b =>
                 {
-                    b.HasOne("TimeSheet.API.Data.User", "HeadOfProject")
+                    b.HasOne("TimeSheet.API.Models.Worker", "HeadOfProject")
                         .WithMany()
                         .HasForeignKey("HeadOfProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -132,6 +155,18 @@ namespace timesheet.api.Migrations
                     b.HasOne("TimeSheet.API.Data.Project", "Project")
                         .WithMany()
                         .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TimeSheet.API.Models.Worker", b =>
+                {
+                    b.HasOne("TimeSheet.API.Models.Group")
+                        .WithMany("Members")
+                        .HasForeignKey("GroupId");
+
+                    b.HasOne("TimeSheet.API.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -32,13 +32,17 @@ namespace TimeSheet.API.Controllers
             // if (!ModelState.IsValid)
             //     return BadRequest(ModelState);
 
-            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
+            //userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
-            if (await _repo.UserExists(userForRegisterDto.Username))
+            if (await _repo.UserExists(userForRegisterDto.Email))
                 return BadRequest("User already exists");
 
             var userToReturn = new User{
-                Username = userForRegisterDto.Username
+                Email = userForRegisterDto.Email,
+                Name = userForRegisterDto.Name,
+                Surname = userForRegisterDto.Surname,
+                Gender = userForRegisterDto.Gender,
+                DateOfBirth = userForRegisterDto.DateOfBirth
             };
 
             var createdUser = _repo.RegisterUser(userToReturn, userForRegisterDto.Password);
@@ -48,16 +52,16 @@ namespace TimeSheet.API.Controllers
 
         [HttpPost("login")]
         public async Task<IActionResult> LoginUser(UserForLoginDto userForLoginDto){
-            userForLoginDto.Username = userForLoginDto.Username.ToLower();
+            //userForLoginDto.Username = userForLoginDto.Username.ToLower();
 
-            var userFromRepo = await _repo.Login(userForLoginDto.Username, userForLoginDto.Password);
+            var userFromRepo = await _repo.Login(userForLoginDto.Email, userForLoginDto.Password);
             
             if (userFromRepo == null)  
                 return Unauthorized();
 
             var claims = new[] {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.UserId.ToString()),
-                new Claim(ClaimTypes.Name, userFromRepo.Username)
+                new Claim(ClaimTypes.Email, userFromRepo.Surname)
             };
 
             //CREATE TOKEN

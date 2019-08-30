@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace timesheet.api.Migrations
 {
-    public partial class CreatedEntities : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,6 +18,26 @@ namespace timesheet.api.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Companies", x => x.CompanyId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Email = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Surname = table.Column<string>(nullable: true),
+                    Gender = table.Column<string>(nullable: true),
+                    DateOfBirth = table.Column<DateTime>(nullable: false),
+                    LastActive = table.Column<DateTime>(nullable: false),
+                    PasswordHash = table.Column<byte[]>(nullable: true),
+                    PasswordSalt = table.Column<byte[]>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,24 +64,35 @@ namespace timesheet.api.Migrations
                         principalTable: "Companies",
                         principalColumn: "CompanyId",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Projects_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "Worker",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(nullable: false)
+                    WorkerId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Username = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    LastActive = table.Column<DateTime>(nullable: false),
-                    PasswordHash = table.Column<byte[]>(nullable: true),
-                    PasswordSalt = table.Column<byte[]>(nullable: true),
+                    UserId = table.Column<int>(nullable: false),
+                    Role = table.Column<string>(nullable: true),
+                    TimeAdded = table.Column<DateTime>(nullable: false),
+                    TimeSpent = table.Column<float>(nullable: false),
                     GroupId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
+                    table.PrimaryKey("PK_Worker", x => x.WorkerId);
+                    table.ForeignKey(
+                        name: "FK_Worker_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,16 +103,18 @@ namespace timesheet.api.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ProjectId = table.Column<int>(nullable: false),
                     HeadOfProjectId = table.Column<int>(nullable: false),
+                    TimeStart = table.Column<DateTime>(nullable: false),
+                    TimeEnd = table.Column<DateTime>(nullable: true),
                     SpentHours = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Groups", x => x.GroupId);
                     table.ForeignKey(
-                        name: "FK_Groups_Users_HeadOfProjectId",
+                        name: "FK_Groups_Worker_HeadOfProjectId",
                         column: x => x.HeadOfProjectId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalTable: "Worker",
+                        principalColumn: "WorkerId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Groups_Projects_ProjectId",
@@ -112,21 +145,18 @@ namespace timesheet.api.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_GroupId",
-                table: "Users",
+                name: "IX_Worker_GroupId",
+                table: "Worker",
                 column: "GroupId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Projects_Users_UserId",
-                table: "Projects",
-                column: "UserId",
-                principalTable: "Users",
-                principalColumn: "UserId",
-                onDelete: ReferentialAction.Restrict);
+            migrationBuilder.CreateIndex(
+                name: "IX_Worker_UserId",
+                table: "Worker",
+                column: "UserId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Users_Groups_GroupId",
-                table: "Users",
+                name: "FK_Worker_Groups_GroupId",
+                table: "Worker",
                 column: "GroupId",
                 principalTable: "Groups",
                 principalColumn: "GroupId",
@@ -136,15 +166,11 @@ namespace timesheet.api.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Groups_Users_HeadOfProjectId",
+                name: "FK_Groups_Worker_HeadOfProjectId",
                 table: "Groups");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_Projects_Users_UserId",
-                table: "Projects");
-
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Worker");
 
             migrationBuilder.DropTable(
                 name: "Groups");
@@ -154,6 +180,9 @@ namespace timesheet.api.Migrations
 
             migrationBuilder.DropTable(
                 name: "Companies");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

@@ -13,9 +13,9 @@ namespace TimeSheet.API.Data
         {
             _context = context;
         }
-        public async Task<User> Login(string username, string password)
+        public async Task<User> Login(string email, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
 
             if (user == null)
                 return null;
@@ -63,9 +63,9 @@ namespace TimeSheet.API.Data
            }
         }
 
-        public async Task<bool> UserExists(string username)
+        public async Task<bool> UserExists(string email)
         {
-            if ( await _context.Users.AnyAsync(u => u.Username == username) ){
+            if ( await _context.Users.AnyAsync(u => u.Email == email) ){
                 return true;
             }
             

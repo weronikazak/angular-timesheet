@@ -1,62 +1,47 @@
 [
-    {
-      "Username": "Angelita",
-      "Name": "Angelita",
-      "LastActive": "2017-08-04",
-      "Password": "password"
-    },
-    {
-      "Username": "Merle",
-      "Name": "Merle",
-      "LastActive": "2017-06-13",
-      "Password": "password"
-    },
-    {
-      "Username": "Glenna",
-      "Name": "Glenna",
-      "LastActive": "2017-05-13",
-      "Password": "password"
-    },
-    {
-      "Username": "Trina",
-      "Name": "Trina",
-      "LastActive": "2017-04-25",
-      "Password": "password"
-    },
-    {
-      "Username": "Suzette",
-      "Name": "Suzette",
-      "LastActive": "2017-07-13",
-      "Password": "password"
-    },
-    {
-        "Username": "Buck",
-        "Name": "Buck",
-        "LastActive": "2017-01-23",
-        "Password": "password"
-    },
-    {
-        "Username": "Ewing",
-        "Name": "Ewing",
-        "LastActive": "2017-07-15",
-        "Password": "password"
-    },
-    {
-        "Username": "Moreno",
-        "Name": "Moreno",
-        "LastActive": "2017-06-23",
-        "Password": "password"
-    },
-    {
-        "Username": "Whitley",
-        "Name": "Whitley",
-        "LastActive": "2017-06-04",
-        "Password": "password"
-    },
-    {
-        "Username": "Mathis",
-        "Name": "Mathis",
-        "LastActive": "2017-07-25",
-        "Password": "password"
-    }
+  {
+    "Email": "nunezoneil@temorak.com",
+    "Name": "Lola",
+    "Gender": "kobieta",
+    "Surname": "Bauer",
+    "LastActive": "2017-01-04",
+    "DateOfBirth": "1960-04-30",
+    "Password": "password"
+  },
+  {
+    "Email": "genacobb@dancity.com",
+    "Name": "Lucille",
+    "Surname": "Reynolds",
+    "Gender": "kobieta",
+    "LastActive": "2017-04-26",
+    "DateOfBirth": "1969-10-01",
+    "Password": "password"
+  },
+  {
+    "Email": "veleznoble@nipaz.com",
+    "Name": "Bob",
+    "Surname": "Massey",
+    "Gender": "mężczyzna",
+    "LastActive": "2017-06-06",
+    "DateOfBirth": "1955-01-30",
+    "Password": "password"
+  },
+  {
+    "Email": "roslyngilmore@gmail.com",
+    "Name": "Mark",
+    "Surname": "Welch",
+    "Gender": "mężczyzna",
+    "LastActive": "2017-08-23",
+    "DateOfBirth": "1969-07-12",
+    "Password": "password"
+  },
+  {
+    "Email": "merrittrosa@wp.com",
+    "Name": "Gaines",
+    "Surname": "Buchanan",
+    "Gender": "mężczyzna",
+    "LastActive": "2017-02-26",
+    "DateOfBirth": "1954-02-01",
+    "Password": "password"
+  }
 ]

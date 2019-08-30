@@ -17,7 +17,7 @@ namespace TimeSheet.API.Data
 
                     user.PasswordHash = passwordHash;
                     user.PasswordSalt = passwordSalt;
-                    user.Username = user.Username.ToLower();
+                    user.Email = user.Email;
                     context.Users.Add(user);
                 }
             }

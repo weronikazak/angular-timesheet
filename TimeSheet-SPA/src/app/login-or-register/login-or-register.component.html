@@ -8,11 +8,11 @@
   <h1 class="h3 mb-3 font-weight-normal">Zaloguj się</h1>
 
   <!-- has to have names. ngClasses are binding with the values in ts file -->
-  <label class="sr-only">Nazwa użytkownika</label>
+  <label class="sr-only">Email użytkownika</label>
   <input type="text"class="form-control"
-    placeholder="Nazwa użytkownika" required autofocus
-    name="username"
-    [(ngModel)]="model.username">
+    placeholder="Email użytkownika" required autofocus
+    name="email"
+    [(ngModel)]="model.email">
 
   <label class="sr-only">Hasło</label>
   <input type="password" class="form-control"
@@ -48,9 +48,9 @@
       <!-- has to have names. ngClasses are binding with the values in ts file -->
       <label class="sr-only">Nazwa użytkownika</label>
       <input type="text"class="form-control"
-        placeholder="Nazwa użytkownika" required autofocus
-        name="username"
-        [(ngModel)]="model.username">
+        placeholder="Email użytkownika" required autofocus
+        name="email"
+        [(ngModel)]="model.email">
 
       <label class="sr-only">Imię</label>
       <input type="text"class="form-control"
@@ -63,6 +63,19 @@
         placeholder="Nazwisko" required autofocus
         name="surname"
         [(ngModel)]="model.surname">
+
+        <!-- TO DO OGARNIECIE DATEPICKERA -->
+      <label class="sr-only">Data urodzenia</label>
+      <input type="text"class="form-control"
+        placeholder="Nazwisko" required autofocus
+        name="surname"
+        [(ngModel)]="model.surname">
+
+      <label class="sr-only">Płeć</label>
+      <mat-radio-group>
+        <mat-radio-button name="gender" value="kobieta">Kobieta</mat-radio-button>
+        <mat-radio-button name="gender" value="male">Mężczyzna</mat-radio-button>
+      </mat-radio-group>
     
       <label class="sr-only">Hasło</label>
       <input type="password" class="form-control"
