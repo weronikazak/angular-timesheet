@@ -19,7 +19,8 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PicktimeDashboardComponent } from './dashboard/picktime-dashboard/picktime-dashboard.component';
-import { MdRadioModule } from '@angular/material';
+// import { MdRadioModule } from '@angular/material';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
    declarations: [
@@ -32,21 +33,22 @@ import { MdRadioModule } from '@angular/material';
       HomeComponent,
       MainScreenComponent,
       UserProfileComponent,
-      PicktimeDashboardComponent
+      PicktimeDashboardComponent,
+      UserListComponent,
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
       TimepickerModule.forRoot(),
-      RouterModule.forRoot(appRoutes),
-      MdRadioModule 
+      RouterModule.forRoot(appRoutes)
+      // MdRadioModule
    ],
    providers: [
       AuthService,
       ErrorInceptorProvide,
       AlertifyService
-      ],
+   ],
    bootstrap: [
       AppComponent
    ]

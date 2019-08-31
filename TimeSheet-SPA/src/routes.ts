@@ -5,6 +5,7 @@ import { UserProfileComponent } from './app/user-profile/user-profile.component'
 import { PicktimeDashboardComponent } from './app/dashboard/picktime-dashboard/picktime-dashboard.component';
 import { LoginOrRegisterComponent } from './app/login-or-register/login-or-register.component';
 import { AuthGuard } from './app/_guard/auth.guard';
+import { UserListComponent } from './app/user-list/user-list.component';
 
 export const appRoutes: Routes = [
     {
@@ -14,7 +15,8 @@ export const appRoutes: Routes = [
         children: [
             { path: 'desktop', component: DashboardComponent},
             { path: 'dashboard', component: PicktimeDashboardComponent},
-            { path: 'user', component: UserProfileComponent},
+            { path: 'profile', component: UserProfileComponent},
+            { path: 'users', component: UserListComponent},
             // { path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
 
         ]

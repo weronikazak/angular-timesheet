@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http;
+using TimeSheet.API.Data;
 
 namespace TimeSheet.API.Helpers
 {
@@ -9,5 +10,6 @@ namespace TimeSheet.API.Helpers
             response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
             response.Headers.Add("Access-Control-Allow-Origin", "*");
         }
+
     }
 }

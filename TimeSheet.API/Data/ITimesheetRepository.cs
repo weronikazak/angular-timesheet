@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TimeSheet.API.Models;
@@ -8,6 +9,8 @@ namespace TimeSheet.API.Data
     {
         void Add<T>(T entity) where T: class;
         void Delete<T>(T entity) where T: class;
+        // Task GetOne<T>(int id) where T: class;
+        // Task<IEnumerable> GetList<T>()where T: class;
         Task<bool> SaveAll();
         Task<IEnumerable<User>> GetUsers();
         Task<User> GetUser(int id);

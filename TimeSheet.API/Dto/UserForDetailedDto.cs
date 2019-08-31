@@ -15,6 +15,6 @@ namespace TimeSheet.API.Dto
         public DateTime LastActive { get; set; }
         public Project LastProject { get; set; }
         public int LastProjectId { get; set; }
-        public ICollection<Project> MyProperty { get; set; }
+        public ICollection<Project> Projects { get; set; }
     }
 }

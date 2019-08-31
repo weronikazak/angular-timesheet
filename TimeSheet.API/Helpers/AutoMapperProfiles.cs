@@ -10,12 +10,10 @@ namespace TimeSheet.API.Helpers
         public AutoMapperProfiles()
         {
             ///// DO POPRAWY
-            CreateMap<User, UserForDetailedDto>()
-                .ForMember(dest => dest.LastProject,
-                    opt => opt.MapFrom(scr => scr.Projects.Where));
-            CreateMap<User, UserForListDto>();
-            CreateMap<User, UserForLoginDto>();
-            CreateMap<User, UserForRegisterDto>();
+            CreateMap<User, UserForDetailedDto>();
+                // .ForMember(dest => dest.LastProject,
+                //     opt => opt.MapFrom
+                //         (scr => scr.Projects.Where(a => a.ProjectId));
         }
     }
 }
