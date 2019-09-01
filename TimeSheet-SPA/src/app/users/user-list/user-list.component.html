@@ -1,0 +1,22 @@
+<h3>Użytkownicy</h3>
+<div class="alert alert-primary">
+  <input type="text" class="input-group-text text-left" placeholder="Szukaj użytkownika">
+</div>
+
+<!-- <div class="container-fluid"> -->
+  <div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2" *ngFor="let user of users">
+       <li class="list-group-item" >
+         <div class="row container-fluid">
+            <div class="left">
+                {{user.name}} {{user.surname}}
+             </div>
+             <div class="right">
+               <span class="badge badge-primary mr-1"[routerLink]="['/users/', user.userId]" routerLinkActive="router-link-active" ><i class="fa fa-user-circle-o m-1" aria-hidden="true"></i></span>    
+               <span class="badge badge-primary mr-1"><i class="fa fa-file m-1"></i></span>       
+               <span class="badge badge-primary"><i class="fa fa-users m-1"></i></span>
+             </div>
+         </div>
+      </li>    
+    </div>
+  </div>

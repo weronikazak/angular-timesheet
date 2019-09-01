@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img src="" alt="" class="card-img-top img-thumbnail">
+        <div class="card-body">
+          <div>
+            <strong>Imie i nazwisko</strong>
+            <p>{{user?.name}} {{user?.surname}}</p>
+          </div>
+          <div>
+            <strong>Data urodzenia:</strong>
+            <p>{{user?.dateOfBirth}}</p>
+          </div>
+          <div>
+              <strong>Ostatnio aktywny</strong>
+              <p>{{user?.lastActive}}</p>
+          </div>
+          <div>
+            <strong>Projekty</strong>
+            <p>{{user?.projects}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="tab-panel">
+          <tabset class="user-tabset">
+            <tab heading="Projekty">
+
+            </tab>
+            <tab heading="Grupy">
+              
+            </tab>
+            <tab heading="Role">
+              
+              </tab>
+          </tabset>
+        </div>
+      </div>
+  </div>
+</div>

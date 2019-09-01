@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
-import { AlertifyService } from '../_services/alertify.service';
-import { User } from '../_models/user';
+import { UserService } from 'src/app/_services/user.service';
+import { User } from 'src/app/_models/user';
+import { AlertifyService } from 'src/app/_services/alertify.service';
 
 @Component({
   selector: 'app-user-list',
@@ -10,6 +10,7 @@ import { User } from '../_models/user';
 })
 export class UserListComponent implements OnInit {
   users: User[];
+  hovering = false;
 
   constructor(private userService: UserService, private alertify: AlertifyService) { }
 

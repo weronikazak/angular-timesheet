@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    this.alertify.error('Nie tym razem ziomul');
+    console.error('Nie tym razem ziomul');
     this.router.navigate(['/login']);
     return false;
   }

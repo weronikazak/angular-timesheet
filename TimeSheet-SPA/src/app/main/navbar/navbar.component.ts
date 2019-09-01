@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
+import { AlertifyService } from 'src/app/_services/alertify.service';
 
 @Component({
   selector: 'app-navbar',

@@ -1,0 +1,26 @@
+.list-group-item:hover {
+    background: #ecf0f1;
+    transition: 300ms;
+    transition-timing-function: ease-out;
+}
+
+.badge:hover {
+    transform: scale(1.1, 1.1);
+    transition: 100ms;
+    transition-timing-function: ease-out;
+}
+
+.right {
+    display: inline-block;
+    position: absolute;
+    right: 5%;
+    top: 15%;
+}
+
+.left {
+    float: left;
+}
+
+.badge {
+    cursor: pointer;
+}

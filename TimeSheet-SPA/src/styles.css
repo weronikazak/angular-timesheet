@@ -4,3 +4,44 @@
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/bootswatch/dist/flatly/bootstrap.min.css';
+
+.tab-panel {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .nav-tabs > li.open, .user-tabset > .nav-tabs > li:hover {
+    border-bottom: 4px solid rgb(182, 193, 204);
+  }
+  
+  .user-tabset > .nav-tabs > li.open > a, .user-tabset > .nav-tabs > li:hover > a {
+    border: 0;
+    background: none !important;
+  }
+  
+  .user-tabset > .nav-tabs > li.open > a > i, .user-tabset > .nav-tabs > li:hover > a > i {
+    color: #a6a6a6;
+  }
+  
+  .user-tabset > .nav-tabs > li.open .dropdown-menu, .user-tabset > .nav-tabs > li:hover .dropdown-menu {
+    margin-top: 0px;
+  }
+  
+  .user-tabset > .nav-tabs > li.active {
+    border-bottom: 4px solid #2C3E50;
+    position: relative;
+  }
+  
+  .user-tabset > .nav-tabs > li.active > a {
+    border: 0 !important;
+  }
+
+  
+  .user-tabset > .tab-content {
+    margin-top: -3px;
+    background-color: #fff;
+    border: 0;
+    border-top: 1px solid #eee;
+    padding: 15px 0; 
+  }

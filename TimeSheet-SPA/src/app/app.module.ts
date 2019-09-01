@@ -3,24 +3,31 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './main/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './_services/auth.service';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { MainDesktopComponent } from './main-desktop/main-desktop.component';
-import { LoginOrRegisterComponent } from './login-or-register/login-or-register.component';
-import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './main/dashboard/dashboard.component';
+import { SidebarComponent } from './main/sidebar/sidebar.component';
+import { MainDesktopComponent } from './main/main-desktop/main-desktop.component';
+import { LoginOrRegisterComponent } from './main/login-or-register/login-or-register.component';
+import { HomeComponent } from './main/home/home.component';
 import { ErrorInceptorProvide } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
-import { MainScreenComponent } from './main-screen/main-screen.component';
-import { TimepickerModule, TimepickerConfig, TimepickerActions } from 'ngx-bootstrap/timepicker';
+import { MainScreenComponent } from './-dashboard/main-screen/main-screen.component';
+import { TimepickerModule, TabsModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { PicktimeDashboardComponent } from './dashboard/picktime-dashboard/picktime-dashboard.component';
+import { UserProfileComponent } from './profile/user-profile/user-profile.component';
+import { PicktimeDashboardComponent } from './-dashboard/picktime-dashboard/picktime-dashboard.component';
 // import { MdRadioModule } from '@angular/material';
-import { UserListComponent } from './user-list/user-list.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
+// import { JwtModule } from '@auth0/angular-jwt';
+// import { tokenKey } from '@angular/core/src/view';
+
+// export function tokenGetter() {
+//    return localStorage.getItem('token');
+// }
 
 @NgModule({
    declarations: [
@@ -35,14 +42,22 @@ import { UserListComponent } from './user-list/user-list.component';
       UserProfileComponent,
       PicktimeDashboardComponent,
       UserListComponent,
+      UserDetailComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
       TimepickerModule.forRoot(),
-      RouterModule.forRoot(appRoutes)
-      // MdRadioModule
+      RouterModule.forRoot(appRoutes),
+      TabsModule.forRoot()
+      // JwtModule.forRoot({
+      //    config: {
+      //       tokenGetter: tokenGetter,
+      //       whitelistedDomains: ['localhost:5000'],
+      //       blacklistedRoutes: ['localhost:5000/api/auth']
+      //    }
+      // })
    ],
    providers: [
       AuthService,
