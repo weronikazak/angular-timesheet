@@ -9,12 +9,17 @@ import { AuthService } from 'src/app/_services/auth.service';
   styleUrls: ['./login-or-register.component.css']
 })
 export class LoginOrRegisterComponent implements OnInit {
-
+  bsValue = new Date();
+  bsRangeValue: Date[];
+  maxDate = new Date();
   model: any = {};
   registrationMode = false;
 
   constructor(private authService: AuthService, private alertify: AlertifyService,
-    private router: Router) { }
+    private router: Router) {
+      this.maxDate.setDate(this.maxDate.getDate() + 7);
+      this.bsRangeValue = [this.bsValue, this.maxDate];
+     }
 
   ngOnInit() {
   }

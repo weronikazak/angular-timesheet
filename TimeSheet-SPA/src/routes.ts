@@ -6,6 +6,7 @@ import { UserProfileComponent } from './app/profile/user-profile/user-profile.co
 import { UserListComponent } from './app/users/user-list/user-list.component';
 import { LoginOrRegisterComponent } from './app/main/login-or-register/login-or-register.component';
 import { UserDetailComponent } from './app/users/user-detail/user-detail.component';
+import { UserDetailResolver } from './app/_resolvers/user-detail.resolver';
 
 
 export const appRoutes: Routes = [
@@ -18,7 +19,7 @@ export const appRoutes: Routes = [
             { path: 'dashboard', component: PicktimeDashboardComponent},
             { path: 'profile', component: UserProfileComponent},
             { path: 'users', component: UserListComponent},
-            { path: 'users/:id', component: UserDetailComponent},
+            { path: 'users/:id', component: UserDetailComponent, resolve: {user: UserDetailResolver}},
             { path: '', component: PicktimeDashboardComponent, pathMatch: 'full' }
 
         ]

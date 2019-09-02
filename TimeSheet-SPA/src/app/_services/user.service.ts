@@ -6,7 +6,7 @@ import { User } from '../_models/user';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Authorization': 'Bearer' + localStorage.getItem('token')
+    'Authorization': 'Bearer ' + localStorage.getItem('token')
   })
 };
 

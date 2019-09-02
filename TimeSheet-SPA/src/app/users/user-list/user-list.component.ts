@@ -11,6 +11,8 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 export class UserListComponent implements OnInit {
   users: User[];
   hovering = false;
+  selected: string;
+  users_names: string[];
 
   constructor(private userService: UserService, private alertify: AlertifyService) { }
 
@@ -23,6 +25,13 @@ export class UserListComponent implements OnInit {
       this.users = users;
     }, error => {
       this.alertify.error(error);
+    });
+    this.getUsersNames();
+  }
+
+  getUsersNames() {
+    this.users.forEach(user => {
+      this.users_names.push(user.name + ' ' + user.surname);
     });
   }
 

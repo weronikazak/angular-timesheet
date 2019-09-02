@@ -1,6 +1,9 @@
 <h3>Użytkownicy</h3>
 <div class="alert alert-primary">
-  <input type="text" class="input-group-text text-left" placeholder="Szukaj użytkownika">
+  <input [(ngModel)]="selected"
+  [typeahead]="users_names"
+  class="form-control"
+  placeholder="Szukaj użytkownika">
 </div>
 
 <!-- <div class="container-fluid"> -->

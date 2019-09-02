@@ -14,7 +14,7 @@ import { HomeComponent } from './main/home/home.component';
 import { ErrorInceptorProvide } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
 import { MainScreenComponent } from './-dashboard/main-screen/main-screen.component';
-import { TimepickerModule, TabsModule } from 'ngx-bootstrap';
+import { TimepickerModule, TabsModule, BsDatepickerModule, TypeaheadModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
 import { UserProfileComponent } from './profile/user-profile/user-profile.component';
@@ -22,6 +22,10 @@ import { PicktimeDashboardComponent } from './-dashboard/picktime-dashboard/pick
 // import { MdRadioModule } from '@angular/material';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { UserService } from './_services/user.service';
+import { UserDetailResolver } from './_resolvers/user-detail.resolver';
+import { AuthGuard } from './_guard/auth.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { JwtModule } from '@auth0/angular-jwt';
 // import { tokenKey } from '@angular/core/src/view';
 
@@ -50,7 +54,10 @@ import { UserDetailComponent } from './users/user-detail/user-detail.component';
       FormsModule,
       TimepickerModule.forRoot(),
       RouterModule.forRoot(appRoutes),
-      TabsModule.forRoot()
+      TabsModule.forRoot(),
+      BrowserAnimationsModule,
+      BsDatepickerModule.forRoot(),
+      TypeaheadModule.forRoot()
       // JwtModule.forRoot({
       //    config: {
       //       tokenGetter: tokenGetter,
@@ -62,7 +69,10 @@ import { UserDetailComponent } from './users/user-detail/user-detail.component';
    providers: [
       AuthService,
       ErrorInceptorProvide,
-      AlertifyService
+      AlertifyService,
+      UserService,
+      AuthGuard,
+      UserDetailResolver
    ],
    bootstrap: [
       AppComponent
