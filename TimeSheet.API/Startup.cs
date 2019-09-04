@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -50,6 +51,8 @@ namespace timesheet.api
                 });
             //for cors errors (korzystac z posrt 5000 na porcie 4200 mze wywolac problem)
             services.AddCors();
+
+            services.AddTransient<Seed>();
 
             services.AddAutoMapper(typeof(TimesheetRepository).Assembly);
             //
@@ -99,9 +102,10 @@ namespace timesheet.api
             //app.UseCookiePolicy();
 
             //for cors errors
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             app.UseAuthentication();
             app.UseMvc();
+
         }
     }
 }

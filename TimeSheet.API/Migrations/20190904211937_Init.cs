@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace timesheet.api.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,13 +47,11 @@ namespace timesheet.api.Migrations
                     ProjectId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ProjectName = table.Column<string>(nullable: true),
-                    CompanyName = table.Column<string>(nullable: true),
-                    CompanyId = table.Column<int>(nullable: true),
-                    ProjectStart = table.Column<DateTime>(nullable: false),
-                    Deadline = table.Column<DateTime>(nullable: false),
+                    CompanyId = table.Column<int>(nullable: false),
+                    ProjectStart = table.Column<DateTime>(nullable: true),
+                    Deadline = table.Column<DateTime>(nullable: true),
                     IsFinished = table.Column<bool>(nullable: false),
-                    SpentHours = table.Column<float>(nullable: false),
-                    UserId = table.Column<int>(nullable: true)
+                    SpentHours = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,13 +61,7 @@ namespace timesheet.api.Migrations
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "CompanyId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Projects_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -101,7 +93,6 @@ namespace timesheet.api.Migrations
                 {
                     GroupId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ProjectId = table.Column<int>(nullable: false),
                     HeadOfProjectId = table.Column<int>(nullable: false),
                     TimeStart = table.Column<DateTime>(nullable: false),
                     TimeEnd = table.Column<DateTime>(nullable: true),
@@ -116,12 +107,6 @@ namespace timesheet.api.Migrations
                         principalTable: "Worker",
                         principalColumn: "WorkerId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Groups_Projects_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "Projects",
-                        principalColumn: "ProjectId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -130,19 +115,9 @@ namespace timesheet.api.Migrations
                 column: "HeadOfProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Groups_ProjectId",
-                table: "Groups",
-                column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Projects_CompanyId",
                 table: "Projects",
                 column: "CompanyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Projects_UserId",
-                table: "Projects",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Worker_GroupId",
@@ -170,16 +145,16 @@ namespace timesheet.api.Migrations
                 table: "Groups");
 
             migrationBuilder.DropTable(
-                name: "Worker");
-
-            migrationBuilder.DropTable(
-                name: "Groups");
-
-            migrationBuilder.DropTable(
                 name: "Projects");
 
             migrationBuilder.DropTable(
                 name: "Companies");
+
+            migrationBuilder.DropTable(
+                name: "Worker");
+
+            migrationBuilder.DropTable(
+                name: "Groups");
 
             migrationBuilder.DropTable(
                 name: "Users");

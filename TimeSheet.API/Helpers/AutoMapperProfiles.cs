@@ -9,8 +9,9 @@ namespace TimeSheet.API.Helpers
     {
         public AutoMapperProfiles()
         {
+            CreateMap<User, UserForListDto>().ReverseMap();
             ///// DO POPRAWY
-            CreateMap<User, UserForDetailedDto>();
+            CreateMap<User, UserForDetailedDto>().ReverseMap();
                 // .ForMember(dest => dest.LastProject,
                 //     opt => opt.MapFrom
                 //         (scr => scr.Projects.Where(a => a.ProjectId));

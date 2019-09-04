@@ -1,34 +1,42 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TimeSheet.API.Data;
+using TimeSheet.API.Dto;
 
 namespace TimeSheet.API.Controllers
 {
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
-        private DataContext _context;
+        private ITimesheetRepository _repo;
+        private IMapper _mapper;
 
-        public UserController(DataContext context)
+        public UserController(ITimesheetRepository repo, IMapper mapper)
         {
-            _context = context;
+            _repo = repo;
+            _mapper = mapper;
         }
-
         [HttpGet]
         public async Task<IActionResult> GetUsers(){
-            var users = await _context.Users.ToListAsync();
+            var users = await _repo.GetUsers();
+            
+            var usersToRetrun = _mapper.Map<IEnumerable<UserForListDto>>(users);
 
-            return Ok(users);
+            return Ok(usersToRetrun);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id){
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == id);
-
-            return Ok(user);
+            var user = await _repo.GetUser(id);
+            var userToRetrun = _mapper.Map<UserForDetailedDto>(user);
+            return Ok(userToRetrun);
         }
     }
 }

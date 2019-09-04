@@ -18,8 +18,8 @@ export const appRoutes: Routes = [
             { path: 'desktop', component: DashboardComponent},
             { path: 'dashboard', component: PicktimeDashboardComponent},
             { path: 'profile', component: UserProfileComponent},
-            { path: 'users', component: UserListComponent},
-            { path: 'users/:id', component: UserDetailComponent, resolve: {user: UserDetailResolver}},
+            { path: 'members', component: UserListComponent},
+            { path: 'members/:id', component: UserDetailComponent, resolve: {user: UserDetailResolver}},
             { path: '', component: PicktimeDashboardComponent, pathMatch: 'full' }
 
         ]

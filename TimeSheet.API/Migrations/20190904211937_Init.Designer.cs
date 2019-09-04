@@ -9,8 +9,8 @@ using TimeSheet.API.Data;
 namespace timesheet.api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190830205813_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190904211937_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,27 +23,21 @@ namespace timesheet.api.Migrations
                     b.Property<int>("ProjectId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CompanyId");
+                    b.Property<int>("CompanyId");
 
-                    b.Property<string>("CompanyName");
-
-                    b.Property<DateTime>("Deadline");
+                    b.Property<DateTime?>("Deadline");
 
                     b.Property<bool>("IsFinished");
 
                     b.Property<string>("ProjectName");
 
-                    b.Property<DateTime>("ProjectStart");
+                    b.Property<DateTime?>("ProjectStart");
 
                     b.Property<float>("SpentHours");
-
-                    b.Property<int?>("UserId");
 
                     b.HasKey("ProjectId");
 
                     b.HasIndex("CompanyId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Projects");
                 });
@@ -93,8 +87,6 @@ namespace timesheet.api.Migrations
 
                     b.Property<int>("HeadOfProjectId");
 
-                    b.Property<int>("ProjectId");
-
                     b.Property<float>("SpentHours");
 
                     b.Property<DateTime?>("TimeEnd");
@@ -104,8 +96,6 @@ namespace timesheet.api.Migrations
                     b.HasKey("GroupId");
 
                     b.HasIndex("HeadOfProjectId");
-
-                    b.HasIndex("ProjectId");
 
                     b.ToTable("Groups");
                 });
@@ -137,12 +127,9 @@ namespace timesheet.api.Migrations
             modelBuilder.Entity("TimeSheet.API.Data.Project", b =>
                 {
                     b.HasOne("TimeSheet.API.Models.Company", "Company")
-                        .WithMany("CompanyProjects")
-                        .HasForeignKey("CompanyId");
-
-                    b.HasOne("TimeSheet.API.Data.User")
-                        .WithMany("Projects")
-                        .HasForeignKey("UserId");
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TimeSheet.API.Models.Group", b =>
@@ -150,11 +137,6 @@ namespace timesheet.api.Migrations
                     b.HasOne("TimeSheet.API.Models.Worker", "HeadOfProject")
                         .WithMany()
                         .HasForeignKey("HeadOfProjectId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TimeSheet.API.Data.Project", "Project")
-                        .WithMany()
-                        .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

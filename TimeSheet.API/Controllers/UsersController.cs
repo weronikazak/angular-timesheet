@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace TimeSheet.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -28,16 +28,16 @@ namespace TimeSheet.API.Controllers
 
             var usersToRetrun = _mapper.Map<IEnumerable<UserForListDto>>(users);
 
-            return Ok(users);
+            return Ok(usersToRetrun);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id){
             var user = await _repo.GetUser(id);
 
-            var usersToRetrun = _mapper.Map<User, UserForListDto>(user);
+            var userToRetrun = _mapper.Map<User, UserForListDto>(user);
 
-            return Ok(user);
+            return Ok(userToRetrun);
         }
     }
 }

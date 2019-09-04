@@ -25,8 +25,6 @@ namespace timesheet.api.Migrations
 
                     b.Property<DateTime?>("Deadline");
 
-                    b.Property<int>("GroupId");
-
                     b.Property<bool>("IsFinished");
 
                     b.Property<string>("ProjectName");
@@ -35,15 +33,9 @@ namespace timesheet.api.Migrations
 
                     b.Property<float>("SpentHours");
 
-                    b.Property<int?>("UserId");
-
                     b.HasKey("ProjectId");
 
                     b.HasIndex("CompanyId");
-
-                    b.HasIndex("GroupId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Projects");
                 });
@@ -133,18 +125,9 @@ namespace timesheet.api.Migrations
             modelBuilder.Entity("TimeSheet.API.Data.Project", b =>
                 {
                     b.HasOne("TimeSheet.API.Models.Company", "Company")
-                        .WithMany("CompanyProjects")
+                        .WithMany()
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TimeSheet.API.Models.Group", "Group")
-                        .WithMany()
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TimeSheet.API.Data.User")
-                        .WithMany("Projects")
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("TimeSheet.API.Models.Group", b =>

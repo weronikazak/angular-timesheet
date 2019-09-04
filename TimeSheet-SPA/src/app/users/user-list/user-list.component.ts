@@ -23,15 +23,9 @@ export class UserListComponent implements OnInit {
   loadUsers() {
     this.userService.getUsers().subscribe((users: User[]) => {
       this.users = users;
+      this.users_names = users.map(u => u.name + ' ' + u.surname);
     }, error => {
       this.alertify.error(error);
-    });
-    this.getUsersNames();
-  }
-
-  getUsersNames() {
-    this.users.forEach(user => {
-      this.users_names.push(user.name + ' ' + user.surname);
     });
   }
 
