@@ -7,6 +7,8 @@ import { UserListComponent } from './app/users/user-list/user-list.component';
 import { LoginOrRegisterComponent } from './app/main/login-or-register/login-or-register.component';
 import { UserDetailComponent } from './app/users/user-detail/user-detail.component';
 import { UserDetailResolver } from './app/_resolvers/user-detail.resolver';
+import { ProfileResolver } from './app/_resolvers/profile.resolver';
+import { PreventUnsavedChangesGuard } from './app/_guard/prevent-unsaved-changes.guard';
 
 
 export const appRoutes: Routes = [
@@ -17,7 +19,9 @@ export const appRoutes: Routes = [
         children: [
             { path: 'desktop', component: DashboardComponent},
             { path: 'dashboard', component: PicktimeDashboardComponent},
-            { path: 'profile', component: UserProfileComponent},
+            { path: 'profile', component: UserProfileComponent,
+             resolve: {user: ProfileResolver},
+             canDeactivate: [PreventUnsavedChangesGuard]},
             { path: 'members', component: UserListComponent},
             { path: 'members/:id', component: UserDetailComponent, resolve: {user: UserDetailResolver}},
             { path: '', component: PicktimeDashboardComponent, pathMatch: 'full' }

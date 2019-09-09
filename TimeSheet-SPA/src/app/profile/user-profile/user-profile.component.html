@@ -1,3 +1,61 @@
-<p>
-  user-profile works!
-</p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img src="" alt="" class="card-img-top img-thumbnail">
+        <div class="card-body">
+          <div>
+            <strong>Imię i nazwisko</strong>
+            <p>{{user.name}} {{user.surname}}</p>
+          </div>
+          <div>
+            <strong>Data urodzenia:</strong>
+            <p>{{user.dateOfBirth}}</p>
+          </div>
+          <div>
+              <strong>Ostatnio aktywny</strong>
+              <p>{{user.lastActive}}</p>
+          </div>
+          <button class="btn-success btn col-sm-12" [disabled]="!editForm.dirty" form="editForm"> Zapisz </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="alert alert-info" form="editForm" *ngIf="editForm.dirty">
+        <strong> UWAGA: </strong> Dokonałeś zmian. Jeśli nie chcesz ich stracić, lepiej je zapisz!
+      </div>
+        <div class="tab-panel">
+          <tabset class="user-tabset col-lg-12 col-md-12 col-sm-12">
+            <tab heading="Twoje projekty">
+
+            </tab>
+            <tab heading="Twoje grupy">
+              
+            </tab>
+            <tab heading="Twoje role">
+              
+              </tab>
+              <tab heading="Edytuj profil">
+              <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()" class="container">
+                <h4>Imie</h4>
+                <input type="text" name="imie"
+                  class="form-control"
+                  [(ngModel)]="user.name"> <br/>
+                <h4>Nazwisko</h4>
+                <input type="text" name="nazwisko"
+                  class="form-control"
+                  [(ngModel)]="user.surname"><br/>
+                  <h4>E-mail</h4>
+                  <input type="text" name="email"
+                    class="form-control"
+                    [(ngModel)]="user.email">
+                  <!-- <h4>Hasło</h4>
+                  <input type="password" name="password"
+                    class="form-control"> -->
+              </form>
+              </tab>
+          </tabset>
+        </div>
+      </div>
+  </div>
+</div>

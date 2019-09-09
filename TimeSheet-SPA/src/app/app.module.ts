@@ -26,12 +26,14 @@ import { UserService } from './_services/user.service';
 import { UserDetailResolver } from './_resolvers/user-detail.resolver';
 import { AuthGuard } from './_guard/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { JwtModule } from '@auth0/angular-jwt';
+import { ProfileResolver } from './_resolvers/profile.resolver';
+import { JwtModule } from '@auth0/angular-jwt';
+import { PreventUnsavedChangesGuard } from './_guard/prevent-unsaved-changes.guard';
 // import { tokenKey } from '@angular/core/src/view';
 
-// export function tokenGetter() {
-//    return localStorage.getItem('token');
-// }
+export function tokenGetter() {
+   return localStorage.getItem('token');
+}
 
 @NgModule({
    declarations: [
@@ -57,14 +59,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       TabsModule.forRoot(),
       BrowserAnimationsModule,
       BsDatepickerModule.forRoot(),
-      TypeaheadModule.forRoot()
-      // JwtModule.forRoot({
-      //    config: {
-      //       tokenGetter: tokenGetter,
-      //       whitelistedDomains: ['localhost:5000'],
-      //       blacklistedRoutes: ['localhost:5000/api/auth']
-      //    }
-      // })
+      TypeaheadModule.forRoot(),
+      JwtModule.forRoot({
+         config: {
+            tokenGetter: tokenGetter,
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/api/auth']
+         }
+      })
    ],
    providers: [
       AuthService,
@@ -72,7 +74,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       AlertifyService,
       UserService,
       AuthGuard,
-      UserDetailResolver
+      UserDetailResolver,
+      ProfileResolver,
+      PreventUnsavedChangesGuard
    ],
    bootstrap: [
       AppComponent
