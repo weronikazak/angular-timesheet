@@ -18,7 +18,7 @@
   <input type="password" class="form-control"
    name="password"
    placeholder="Hasło" required
-   [(ngModel)]="model.password">
+   [(ngModel)]="model.password"><br/>
 
    <label class="alert-link">
       <a (click)="toggleRegistrationMode()">Nie masz jeszcze konta?</a>
@@ -40,49 +40,75 @@
 
 
 <div class="container text-center text-container" *ngIf="registrationMode">
-  <form #loginForm="ngForm" class="form-signin" (ngSubmit)="register()">
+  <form [formGroup]="registerForm" class="form-signin" (ngSubmit)="register()">
 
 
       <h1 class="h3 mb-3 font-weight-normal">Zarejestruj się</h1>
     
       <!-- has to have names. ngClasses are binding with the values in ts file -->
-      <label class="sr-only">Nazwa użytkownika</label>
-      <input type="text"class="form-control"
-        placeholder="Email użytkownika" required autofocus
-        name="email"
-        [(ngModel)]="model.email">
+      <input type="email" class="form-control"
+        [ngClass]="{'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}"
+        placeholder="Email użytkownika" autofocus
+        formControlName="email">
+        <div class="invalid-feedback">Podaj swój email.</div>
 
-      <label class="sr-only">Imię</label>
-      <input type="text"class="form-control"
-        placeholder="Imię" required autofocus
-        name="name"
-        [(ngModel)]="model.name">
+      <input type="text" class="form-control"
+        [ngClass]="{'is-invalid': registerForm.get('name').errors && registerForm.get('name').touched}"
+        placeholder="Imię"
+        formControlName="name">
+        <div class="invalid-feedback">Wpisz swoje imię.</div>
 
-      <label class="sr-only">Nazwisko</label>
-      <input type="text"class="form-control"
-        placeholder="Nazwisko" required autofocus
-        name="surname"
-        [(ngModel)]="model.surname">
 
-        <!-- TO DO OGARNIECIE DATEPICKERA -->
-      <label class="sr-only">Data urodzenia</label>
+      <input type="text" class="form-control"
+        [ngClass]="{'is-invalid': registerForm.get('surname').errors && registerForm.get('surname').touched}"
+        placeholder="Nazwisko"
+        formControlName="surname">
+        <div class="invalid-feedback">Wpisz swoje nazwisko.</div>
+
       <input type="text"
               class="form-control"
+              [ngClass]="{'is-invalid': registerForm.get('birthDate').errors}"
               #dp="bsDatepicker"
               bsDatepicker
-              [bsValue]="bsValue">
+              name="birthDate"
+              formControlName="birthDate">
+              <div class="invalid-feedback">Hm, coś jest nie tak z tą datą urodzenia.</div>
 
-      <label class="sr-only">Płeć</label>
       <!-- <mat-radio-group>
         <mat-radio-button name="gender" value="kobieta">Kobieta</mat-radio-button>
         <mat-radio-button name="gender" value="male">Mężczyzna</mat-radio-button>
       </mat-radio-group> -->
     
-      <label class="sr-only">Hasło</label>
       <input type="password" class="form-control"
-      name="password"
-      placeholder="Hasło" required
-      [(ngModel)]="model.password">
+      formControlName="password"
+      [ngClass]="{'is-invalid': registerForm.get('password').errors && registerForm.get('password').touched}"
+      placeholder="Hasło">
+      <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched">
+        Hasło jest wymagane.
+      </div>
+      <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('minlength') && registerForm.get('password').touched">
+          Hasło jest za krótkie.
+        </div>
+        <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('maxlength') && registerForm.get('password').touched">
+            Hasło jest za długie.
+          </div>
+
+
+      <input type="password" class="form-control"
+      [ngClass]="{'is-invalid': registerForm.get('confirmPassword').errors
+       && registerForm.get('confirmPassword').touched
+       || registerForm.get('confirmPassword').touched
+       && registerForm.hasError('mismatch')}"
+      formControlName="confirmPassword"
+      placeholder="Powtórz hasło"><br/>
+      <div class="invalid-feedback"
+        *ngIf="registerForm.get('confirmPassword').hasError('required') && registerForm.get('confirmPassword').touched">
+        Powtórz hasło.
+      </div>
+      <div class="invalid-feedback"
+      *ngIf="registerForm.get('confirmPassword').touched && registerForm.hasError('mismatch')">
+      Hasła muszą być takie same.
+    </div>
     
       <div class="form-group text-center">
         <button class="btn btn-success btn-lg" type="submit">Zarejestruj</button>
