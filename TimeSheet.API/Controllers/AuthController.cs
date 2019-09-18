@@ -51,7 +51,7 @@ namespace TimeSheet.API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> LoginUser(UserForLoginDto userForLoginDto){
+        public async Task<IActionResult> LoginUser([FromBody]UserForLoginDto userForLoginDto){
             //userForLoginDto.Username = userForLoginDto.Username.ToLower();
 
             var userFromRepo = await _repo.Login(userForLoginDto.Email, userForLoginDto.Password);
@@ -61,12 +61,13 @@ namespace TimeSheet.API.Controllers
 
             var claims = new[] {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.UserId.ToString()),
-                new Claim(ClaimTypes.Email, userFromRepo.Surname)
+                new Claim(ClaimTypes.Surname, userFromRepo.Surname)
             };
 
             //CREATE TOKEN
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
+            var key = new SymmetricSecurityKey(Encoding.UTF8
+                .GetBytes(_config.GetSection("AppSettings:Token").Value));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 

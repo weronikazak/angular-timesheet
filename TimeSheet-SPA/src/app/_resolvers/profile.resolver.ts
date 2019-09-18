@@ -17,7 +17,7 @@ export class ProfileResolver implements Resolve<User> {
         return this.userService.getUser(this.authService.decodedToken.nameid).pipe(
             catchError(error => {
                 this.alertify.error('Napotkano problem podczas przesyłania danych.');
-                this.router.navigate(['/users']);
+                this.router.navigate(['/user']);
                 return of(null);
             })
         );
