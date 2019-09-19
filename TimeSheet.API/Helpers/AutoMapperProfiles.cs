@@ -15,6 +15,7 @@ namespace TimeSheet.API.Helpers
             ///// DO POPRAWY
             CreateMap<User, UserForDetailedDto>().ReverseMap();
             CreateMap<UserForUpdateDto, User>().ReverseMap();
+            CreateMap<ProjectForListDto, Project>().ReverseMap();
                 // .ForMember(dest => dest.LastProject,
                 //     opt => opt.MapFrom
                 //         (scr => scr.Projects.Where(a => a.ProjectId));

@@ -74,10 +74,14 @@
               formControlName="birthDate">
               <div class="invalid-feedback">Hm, coś jest nie tak z tą datą urodzenia.</div>
 
-      <!-- <mat-radio-group>
-        <mat-radio-button name="gender" value="kobieta">Kobieta</mat-radio-button>
-        <mat-radio-button name="gender" value="male">Mężczyzna</mat-radio-button>
-      </mat-radio-group> -->
+    <div class="form-group">
+      <label class="radio-inline">
+        <input class="mr-3" type="radio" value="male" formControlName="gender">Mężczyzna
+      </label>
+      <label class="radio-inline ml-3">
+        <input class="mr-3" type="radio" value="female" formControlName="gender">Kobieta
+      </label>
+    </div>            
     
       <input type="password" class="form-control"
       formControlName="password"
@@ -111,7 +115,7 @@
     </div>
     
       <div class="form-group text-center">
-        <button class="btn btn-success btn-lg" type="submit">Zarejestruj</button>
+        <button class="btn btn-success btn-lg" [disabled]="!registerForm.valid" type="submit">Zarejestruj</button>
         <button class="btn btn-default btn-lg" type="button" (click)="cancel()">Wróć</button>
       </div>
       

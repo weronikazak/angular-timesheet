@@ -4,8 +4,8 @@ import { Group } from './group';
 export interface Project {
     projectId: number;
     projectName: string;
-    companyId: number;
     company: Company;
+    companyId: number;
     projectStart?: Date;
     deadLine?: Date;
     isFinished: boolean;

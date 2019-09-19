@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -18,11 +19,13 @@ namespace TimeSheet.API.Controllers
     {
         private IConfiguration _config;
         private IAuthRepository _repo;
+        private IMapper _mapper;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
             _config = config;
             _repo = repo;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
@@ -37,17 +40,13 @@ namespace TimeSheet.API.Controllers
             if (await _repo.UserExists(userForRegisterDto.Email))
                 return BadRequest("User already exists");
 
-            var userToReturn = new User{
-                Email = userForRegisterDto.Email,
-                Name = userForRegisterDto.Name,
-                Surname = userForRegisterDto.Surname,
-                Gender = userForRegisterDto.Gender,
-                DateOfBirth = userForRegisterDto.DateOfBirth
-            };
+            var userToCreate = _mapper.Map<User>(userForRegisterDto);
 
-            var createdUser = _repo.RegisterUser(userToReturn, userForRegisterDto.Password);
+            var createdUser = await _repo.RegisterUser(userToCreate, userForRegisterDto.Password);
 
-            return Ok(createdUser);
+            var userTReturn = _mapper.Map<UserForDetailedDto>(createdUser);
+
+            return CreatedAtRoute("GetUser", new {controller = "Users", id = createdUser.UserId}, userTReturn);
         }
 
         [HttpPost("login")]

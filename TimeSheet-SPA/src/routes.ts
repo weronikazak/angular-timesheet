@@ -9,6 +9,7 @@ import { UserDetailComponent } from './app/users/user-detail/user-detail.compone
 import { UserDetailResolver } from './app/_resolvers/user-detail.resolver';
 import { ProfileResolver } from './app/_resolvers/profile.resolver';
 import { PreventUnsavedChangesGuard } from './app/_guard/prevent-unsaved-changes.guard';
+import { ProjectListAllComponent } from './app/projects/project-list-all/project-list-all.component';
 
 
 export const appRoutes: Routes = [
@@ -23,6 +24,7 @@ export const appRoutes: Routes = [
              resolve: {user: ProfileResolver},
              canDeactivate: [PreventUnsavedChangesGuard]},
             { path: 'members', component: UserListComponent},
+            { path: 'projects/all', component: ProjectListAllComponent},
             { path: 'members/:id', component: UserDetailComponent, resolve: {user: UserDetailResolver}},
             { path: '', component: PicktimeDashboardComponent, pathMatch: 'full' }
 

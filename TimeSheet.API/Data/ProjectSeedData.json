@@ -1,7 +1,7 @@
 [
     {
       "ProjectName": "Avenue",
-      "CompanyName": "Conferia",
+      "CompanyId": "1",
       "ProjectStart": "2017-03-04",
       "Deadline": "2018-05-24",
       "IsFinished": true,
@@ -9,7 +9,7 @@
     },
     {
       "ProjectName": "Brighton",
-      "CompanyName": "Kengen",
+      "CompanyId": "2",
       "ProjectStart": "2019-08-26",
       "Deadline": "2014-04-26",
       "IsFinished": false,
@@ -17,7 +17,7 @@
     },
     {
       "ProjectName": "Medcom",
-      "CompanyName": "Kengen",
+      "CompanyId": "1",
       "ProjectStart": "2017-04-28",
       "Deadline": "2017-06-12",
       "IsFinished": false,

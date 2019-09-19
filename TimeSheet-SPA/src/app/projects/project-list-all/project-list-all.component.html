@@ -1,0 +1,40 @@
+<h3>Projekty</h3>
+<div class="alert alert-warning">
+  <input [(ngModel)]="single_project"
+  [typeahead]="project_list"
+  [(formControl)]="lookForProject"
+  class="form-control"
+  placeholder="Szukaj projektu">
+</div>
+
+<div class="row" *ngIf="(!lookForProject.dirty && !lookForProject.touched)
+  || (lookForProject===null || !lookForProject=== '')">
+  <div class="col-lg-3 col-md-6 col-sm-12 mb-2" *ngFor="let project of projects">
+    <div class="card text-center" style="width: 18rem;">
+      <div class="card-header bg-warning" [ngClass]="project.isFinished ? 'bg-warning' : 'bg-dark'">
+        {{project.companyId}}
+      </div>
+        <div class="card-body">
+          <h5 class="card-title text-uppercase">{{project.projectName}}</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Zobacz szczegóły</a>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="lookForProject.dirty && lookForProject != ''">
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
+        <div class="card text-center" style="width: 18rem;">
+          <div class="card-header bg-warning" [ngClass]="single_project ? 'bg-warning' : 'bg-dark'">
+            {{single_project.companyId}}
+          </div>
+            <div class="card-body">
+              <h5 class="card-title text-uppercase">{{single_project.projectName}}</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Zobacz szczegóły</a>
+            </div>
+          </div>
+      </div>
+</div>
+

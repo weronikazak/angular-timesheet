@@ -31,6 +31,7 @@ export class LoginOrRegisterComponent implements OnInit {
       email: ['', Validators.required],
       name: ['', Validators.required],
       surname: ['', Validators.required],
+      gender: ['kobieta', Validators.required],
       birthDate: [this.today, Validators.required],
       password: ['',
         [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],

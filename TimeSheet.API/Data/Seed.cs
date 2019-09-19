@@ -22,21 +22,21 @@ namespace TimeSheet.API.Data
                 }
             }
 
-            // if (!context.Companies.Any()){
-            //     var companyData = System.IO.File.ReadAllText("Data/CompanySeedData.json");
-            //     var companies = JsonConvert.DeserializeObject<List<Company>>(companyData);
-            //     foreach (var company in companies) {
-            //         context.Companies.Add(company);
-            //     }
-            // }
+            if (!context.Companies.Any()){
+                var companyData = System.IO.File.ReadAllText("Data/CompanySeedData.json");
+                var companies = JsonConvert.DeserializeObject<List<Company>>(companyData);
+                foreach (var company in companies) {
+                    context.Companies.Add(company);
+                }
+            }
 
-            // if (!context.Projects.Any()){
-            //     var projectData = System.IO.File.ReadAllText("Data/ProjectSeedData.json");
-            //     var projects = JsonConvert.DeserializeObject<List<Project>>(projectData);
-            //     foreach (var project in projects) {
-            //         context.Projects.Add(project);
-            //     }
-            // }
+            if (!context.Projects.Any()){
+                var projectData = System.IO.File.ReadAllText("Data/ProjectSeedData.json");
+                var projects = JsonConvert.DeserializeObject<List<Project>>(projectData);
+                foreach (var project in projects) {
+                    context.Projects.Add(project);
+                }
+            }
 
             
 

@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileResolver } from './_resolvers/profile.resolver';
 import { JwtModule } from '@auth0/angular-jwt';
 import { PreventUnsavedChangesGuard } from './_guard/prevent-unsaved-changes.guard';
+import { ProjectListAllComponent } from './projects/project-list-all/project-list-all.component';
 // import { tokenKey } from '@angular/core/src/view';
 
 export function tokenGetter() {
@@ -48,12 +49,14 @@ export function tokenGetter() {
       UserProfileComponent,
       PicktimeDashboardComponent,
       UserListComponent,
-      UserDetailComponent
+      UserDetailComponent,
+      ProjectListAllComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      BrowserAnimationsModule,
       TimepickerModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       TabsModule.forRoot(),

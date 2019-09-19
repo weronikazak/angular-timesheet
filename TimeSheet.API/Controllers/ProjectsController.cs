@@ -27,7 +27,7 @@ namespace TimeSheet.API.Controllers
         public async Task<IActionResult> GetProjects() {
             var projects = await _repo.GetProjects();
 
-            var projectsToReturn = _mapper.Map<IEnumerable<ProjectForDetailedDto>>(projects);
+            var projectsToReturn = _mapper.Map<IEnumerable<ProjectForListDto>>(projects);
 
             return Ok(projectsToReturn);
         }
