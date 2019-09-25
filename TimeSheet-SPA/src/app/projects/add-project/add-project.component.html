@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <img src="" alt="" class="card-img-top img-thumbnail">
+          <div class="card-body">
+            <div>
+              <label>Nazwa projektu</label>
+              <input type="text" [ngModel]="">
+            </div>
+            <div>
+                <label>Nazwa firmy</label>
+                <input type="text" [ngModel]="">
+            </div>
+            <div>
+                <strong>Deadline</strong>
+                <!-- TO DO WSTAWIĆ DATEPICKER -->
+                <input type="text" [ngModel]="">
+            </div>
+            <button class="btn-success btn col-sm-12" [disabled]="!editForm.dirty" form="editForm"> Zapisz </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

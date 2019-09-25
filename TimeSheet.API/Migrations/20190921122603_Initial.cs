@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace timesheet.api.Migrations
 {
-    public partial class Init : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,6 +51,7 @@ namespace timesheet.api.Migrations
                     ProjectStart = table.Column<DateTime>(nullable: true),
                     Deadline = table.Column<DateTime>(nullable: true),
                     IsFinished = table.Column<bool>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
                     SpentHours = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
@@ -61,6 +62,12 @@ namespace timesheet.api.Migrations
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "CompanyId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Projects_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -118,6 +125,11 @@ namespace timesheet.api.Migrations
                 name: "IX_Projects_CompanyId",
                 table: "Projects",
                 column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projects_UserId",
+                table: "Projects",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Worker_GroupId",

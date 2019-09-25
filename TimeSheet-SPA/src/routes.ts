@@ -10,6 +10,10 @@ import { UserDetailResolver } from './app/_resolvers/user-detail.resolver';
 import { ProfileResolver } from './app/_resolvers/profile.resolver';
 import { PreventUnsavedChangesGuard } from './app/_guard/prevent-unsaved-changes.guard';
 import { ProjectListAllComponent } from './app/projects/project-list-all/project-list-all.component';
+import { ProjectDetailResolver } from './app/_resolvers/project-detail.resolver';
+import { AddProjectComponent } from './app/projects/add-project/add-project.component';
+import { ProjectDetailComponent } from './app/profile/project-detail/project-detail.component';
+import { CompanyListComponent } from './app/companies/company-list/company-list.component';
 
 
 export const appRoutes: Routes = [
@@ -25,6 +29,10 @@ export const appRoutes: Routes = [
              canDeactivate: [PreventUnsavedChangesGuard]},
             { path: 'members', component: UserListComponent},
             { path: 'projects/all', component: ProjectListAllComponent},
+            { path: 'projects/add', component: AddProjectComponent},
+            { path: 'companies', component: CompanyListComponent},
+            // { path: 'projects/user', component: AddProjectComponent},
+            { path: 'projects/:id', component: ProjectDetailComponent, resolve: {project: ProjectDetailResolver}},
             { path: 'members/:id', component: UserDetailComponent, resolve: {user: UserDetailResolver}},
             { path: '', component: PicktimeDashboardComponent, pathMatch: 'full' }
 

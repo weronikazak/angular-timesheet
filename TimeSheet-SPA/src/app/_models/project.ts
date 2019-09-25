@@ -1,5 +1,6 @@
 import { Company } from './company';
 import { Group } from './group';
+import { User } from './user';
 
 export interface Project {
     projectId: number;
@@ -7,9 +8,9 @@ export interface Project {
     company: Company;
     companyId: number;
     projectStart?: Date;
-    deadLine?: Date;
+    deadline?: Date;
     isFinished: boolean;
-    groupId: number;
-    group: Group;
+    userId: number;
+    user: User;
     spentHours: number;
 }

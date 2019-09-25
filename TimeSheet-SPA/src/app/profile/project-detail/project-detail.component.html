@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <img src="{{pictureUrl}}" alt="" class="card-img-top img-thumbnail">
+          <div class="card-body">
+            <div>
+              <strong>Nazwa projektu</strong>
+              <p>{{project?.projectName}}</p>
+            </div>
+            <div>
+              <strong>Firma:</strong>
+              <p>{{project?.company.companyName}}</p>
+            </div>
+            <div>
+                <strong>Zlecenie projektu</strong>
+                <p>{{project?.projectStart}}</p>
+            </div>
+            <!-- <button class="btn-success btn col-sm-12" [disabled]="!editForm.dirty" form="editForm"> Zapisz </button> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <p>WYKRESY ITD</p>
+      </div>
+    </div>
+  </div>

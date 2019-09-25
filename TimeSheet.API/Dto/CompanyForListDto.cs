@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using TimeSheet.API.Data;
 
-namespace TimeSheet.API.Models
+namespace TimeSheet.API.Dto
 {
-    public class Company
+    public class CompanyForListDto
     {
-        public int CompanyId { get; set; }
         public string CompanyName { get; set; }
         public ICollection<Project> CompanyProjects { get; set; }
     }

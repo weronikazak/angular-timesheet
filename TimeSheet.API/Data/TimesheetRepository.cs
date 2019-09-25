@@ -39,14 +39,14 @@ namespace TimeSheet.API.Data
 
         public async Task<Project> GetProject(int id)
         {
-            var project = await _context.Projects.FirstOrDefaultAsync(p => p.ProjectId == id);
+            var project = await _context.Projects.Include(u => u.Company).FirstOrDefaultAsync(p => p.ProjectId == id);
 
             return project;
         }
 
         public async Task<IEnumerable<Project>> GetProjects()
         {
-            var projects = await _context.Projects.ToListAsync();
+            var projects = await _context.Projects.Include(u => u.Company).ToListAsync();
 
             return projects;
         }

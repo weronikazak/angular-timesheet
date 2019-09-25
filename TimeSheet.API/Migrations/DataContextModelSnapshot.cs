@@ -33,9 +33,13 @@ namespace timesheet.api.Migrations
 
                     b.Property<float>("SpentHours");
 
+                    b.Property<int>("UserId");
+
                     b.HasKey("ProjectId");
 
                     b.HasIndex("CompanyId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Projects");
                 });
@@ -127,6 +131,11 @@ namespace timesheet.api.Migrations
                     b.HasOne("TimeSheet.API.Models.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TimeSheet.API.Data.User", "User")
+                        .WithMany("Projects")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

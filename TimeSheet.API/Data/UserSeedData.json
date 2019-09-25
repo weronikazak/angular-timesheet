@@ -6,7 +6,11 @@
     "Surname": "Bauer",
     "LastActive": "2017-01-04",
     "DateOfBirth": "1960-04-30",
-    "Password": "password"
+    "Password": "password",
+    "Projects": [{
+      "ProjectName": "Avenue",
+      "CompanyId": "1"
+    }]
   },
   {
     "Email": "genacobb@dancity.com",
@@ -15,7 +19,11 @@
     "Gender": "kobieta",
     "LastActive": "2017-04-26",
     "DateOfBirth": "1969-10-01",
-    "Password": "password"
+    "Password": "password",
+    "Projects": [{
+      "ProjectName": "Brighton",
+      "CompanyId": "2"
+    }]
   },
   {
     "Email": "veleznoble@nipaz.com",
@@ -24,7 +32,11 @@
     "Gender": "mężczyzna",
     "LastActive": "2017-06-06",
     "DateOfBirth": "1955-01-30",
-    "Password": "password"
+    "Password": "password",
+    "Projects": [{
+      "ProjectName": "Medcom",
+      "CompanyId": "1"
+    }]
   },
   {
     "Email": "roslyngilmore@gmail.com",
@@ -33,7 +45,11 @@
     "Gender": "mężczyzna",
     "LastActive": "2017-08-23",
     "DateOfBirth": "1969-07-12",
-    "Password": "password"
+    "Password": "password",
+    "Projects": [{
+      "ProjectName": "Medcom",
+      "CompanyId": "1"
+    }]
   },
   {
     "Email": "merrittrosa@wp.com",
@@ -42,6 +58,10 @@
     "Gender": "mężczyzna",
     "LastActive": "2017-02-26",
     "DateOfBirth": "1954-02-01",
-    "Password": "password"
+    "Password": "password",
+    "Projects": [{
+      "ProjectName": "Avenue",
+      "CompanyId": "1"
+    }]
   }
 ]

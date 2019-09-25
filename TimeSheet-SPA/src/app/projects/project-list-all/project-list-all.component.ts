@@ -14,12 +14,12 @@ export class ProjectListAllComponent implements OnInit {
   project_list;
   single_project: string;
   lookForProject = new FormControl('');
+  noResult = false;
 
   constructor(private projectService: ProjectService, private alertify: AlertifyService) { }
 
   ngOnInit() {
     this.loadProjects();
-    console.log(this.single_project);
   }
 
   loadProjects() {
@@ -29,9 +29,8 @@ export class ProjectListAllComponent implements OnInit {
     }, error => this.alertify.error(error));
   }
 
-  checkIfProjectExists(project) {
-    // DO DOKOŃCZENIA
-    return this.projectService.getProject();
+  typeaheadNoResults(event: boolean): void {
+    this.noResult = event;
   }
 
 }

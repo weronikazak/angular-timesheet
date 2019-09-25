@@ -30,6 +30,12 @@ import { ProfileResolver } from './_resolvers/profile.resolver';
 import { JwtModule } from '@auth0/angular-jwt';
 import { PreventUnsavedChangesGuard } from './_guard/prevent-unsaved-changes.guard';
 import { ProjectListAllComponent } from './projects/project-list-all/project-list-all.component';
+import { ProjectDetailResolver } from './_resolvers/project-detail.resolver';
+import { ProjectDetailComponent } from './profile/project-detail/project-detail.component';
+import { AddProjectComponent } from './projects/add-project/add-project.component';
+import { CompanyListComponent } from './companies/company-list/company-list.component';
+import { ProjectService } from './_services/project.service';
+import { CompanyService } from './_services/company.service';
 // import { tokenKey } from '@angular/core/src/view';
 
 export function tokenGetter() {
@@ -50,7 +56,10 @@ export function tokenGetter() {
       PicktimeDashboardComponent,
       UserListComponent,
       UserDetailComponent,
-      ProjectListAllComponent
+      ProjectListAllComponent,
+      ProjectDetailComponent,
+      AddProjectComponent,
+      CompanyListComponent
    ],
    imports: [
       BrowserModule,
@@ -80,7 +89,10 @@ export function tokenGetter() {
       AuthGuard,
       UserDetailResolver,
       ProfileResolver,
-      PreventUnsavedChangesGuard
+      PreventUnsavedChangesGuard,
+      ProjectDetailResolver,
+      ProjectService,
+      CompanyService
    ],
    bootstrap: [
       AppComponent
