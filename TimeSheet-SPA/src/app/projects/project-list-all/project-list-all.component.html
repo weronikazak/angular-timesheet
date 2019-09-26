@@ -17,15 +17,42 @@
 
 <div class="alert alert-danger" *ngIf="noResult">No Results Found</div>
 
-<div class="row" *ngIf="(!lookForProject.dirty && !lookForProject.touched)
+<div class="container">
+<table class="table table-striped col-lg-10">
+    <thead>
+      <tr>
+        <th scope="col">Projekt</th>
+        <th scope="col" >Firma</th>
+        <th scope="col">Szczegóły</th>
+      </tr>
+    </thead>
+    <tbody>
+      <div *ngFor="let project of projects">
+      <tr>
+        <td class="text-uppercase">{{project.projectName}}</td>
+        <td class="col-lg-3">{{project.company.companyName}}</td>
+        <td>
+          <a href="#" class="btn btn-primary" [routerLink]="['/projects/', project.projectId]" routerLinkActive="router-link-active">
+          Zobacz szczegóły
+        </a></td>
+      </tr>
+    </div>
+    </tbody>
+  </table>
+</div>
+
+<!-- <div class="row" *ngIf="(!lookForProject.dirty && !lookForProject.touched)
   || (noResult)">
   <div class="col-lg-3 col-md-6 col-sm-12 mb-2" *ngFor="let project of projects">
     <div class="card text-center" style="width: 18rem;">
-      <div class="card-header bg-warning" [ngClass]="project.isFinished ? 'bg-warning' : 'bg-dark'">
-        {{project.deadline}}
+      <div class="card-header bg-warning text-uppercase" [ngClass]="{
+        'project-finished': project.isFinished,
+        'project-inprogress': !project.isFinished && !deadlinePassed(project),
+        'project-deadline': !project.isFinished && deadlinePassed(project)}">
+        {{project.isFinished}} {{deadlinePassed(project)}}
       </div>
         <div class="card-body">
-          <h5 class="card-title text-uppercase">{{project.projectName}}</h5>
+          <h5 class="card-title">{{project.projectName}}, <span class="text-uppercase">{{project.company.companyName}}</span></h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
           <a href="#" class="btn btn-primary" [routerLink]="['/projects/', project.projectId]" routerLinkActive="router-link-active">
             Zobacz szczegóły
@@ -49,4 +76,4 @@
           </div>
       </div>
 </div>
-
+ -->

@@ -1,4 +1,5 @@
 using System;
+using TimeSheet.API.Models;
 
 namespace TimeSheet.API.Dto
 {
@@ -6,6 +7,7 @@ namespace TimeSheet.API.Dto
     {
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
+        public Company Company { get; set; } 
         public int CompanyId { get; set; }
         public DateTime? ProjectStart { get; set; }
         public DateTime? Deadline { get; set; }

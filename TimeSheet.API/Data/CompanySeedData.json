@@ -1,8 +1,29 @@
 [
     {
-      "CompanyName": "Conferia"
+      "CompanyName": "Conferia",
+      "Projects": [{
+        "ProjectName": "Brighton",
+        "ProjectStart": "2019-09-20T06:37:26",
+        "Deadline": "2020-09-22T06:37:26",
+        "IsFinished":true,
+        "SpentHours": 2.4
+      }]
     },
     {
-      "CompanyName": "Kengen"
+      "CompanyName": "Kengen",
+      "Projects": [{
+        "ProjectName": "Avenue",
+        "ProjectStart": "2019-09-20T06:37:26",
+        "Deadline": "2020-09-22T06:37:26",
+        "IsFinished":false,
+        "SpentHours":5
+      },
+      {
+        "ProjectName": "Medicom",
+        "ProjectStart": "2019-09-20T06:37:26",
+        "Deadline": "2020-09-22T06:37:26",
+        "IsFinished":false,
+        "SpentHours":3
+      }]
     }
   ]

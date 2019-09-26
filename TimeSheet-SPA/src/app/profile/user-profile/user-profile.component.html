@@ -2,11 +2,10 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img src="" alt="" class="card-img-top img-thumbnail">
-        <div class="card-body">
+        <img src="{{userUrl}}" alt="" class="card-img-top img-thumbnail">
+        <div class="card-body text-center">
           <div>
-            <strong>Imię i nazwisko</strong>
-            <p>{{user.name}} {{user.surname}}</p>
+            <h3>{{user.name}} {{user.surname}}</h3>
           </div>
           <div>
             <strong>Data urodzenia:</strong>
@@ -16,7 +15,7 @@
               <strong>Ostatnio aktywny</strong>
               <p>{{user.lastActive}}</p>
           </div>
-          <button class="btn-success btn col-sm-12" [disabled]="!editForm.dirty" form="editForm"> Zapisz </button>
+          <button class="btn-warning btn col-sm-12" [disabled]="!editForm.dirty" form="editForm"> Zapisz </button>
         </div>
       </div>
     </div>

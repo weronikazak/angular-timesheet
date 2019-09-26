@@ -4,64 +4,44 @@
     "Name": "Lola",
     "Gender": "kobieta",
     "Surname": "Bauer",
-    "LastActive": "2017-01-04",
-    "DateOfBirth": "1960-04-30",
-    "Password": "password",
-    "Projects": [{
-      "ProjectName": "Avenue",
-      "CompanyId": "1"
-    }]
+    "LastActive": "2019-09-20T06:37:26",
+    "DateOfBirth": "2000-09-20T00:00:00",
+    "Password": "password"
   },
   {
     "Email": "genacobb@dancity.com",
     "Name": "Lucille",
     "Surname": "Reynolds",
     "Gender": "kobieta",
-    "LastActive": "2017-04-26",
-    "DateOfBirth": "1969-10-01",
-    "Password": "password",
-    "Projects": [{
-      "ProjectName": "Brighton",
-      "CompanyId": "2"
-    }]
+    "LastActive": "2019-09-20T06:37:26",
+    "DateOfBirth": "2000-09-20T00:00:00",
+    "Password": "password"
   },
   {
     "Email": "veleznoble@nipaz.com",
     "Name": "Bob",
     "Surname": "Massey",
     "Gender": "mężczyzna",
-    "LastActive": "2017-06-06",
-    "DateOfBirth": "1955-01-30",
-    "Password": "password",
-    "Projects": [{
-      "ProjectName": "Medcom",
-      "CompanyId": "1"
-    }]
+    "LastActive": "2019-09-20T06:37:26",
+    "DateOfBirth": "2000-09-20T00:00:00",
+    "Password": "password"
   },
   {
     "Email": "roslyngilmore@gmail.com",
     "Name": "Mark",
     "Surname": "Welch",
     "Gender": "mężczyzna",
-    "LastActive": "2017-08-23",
-    "DateOfBirth": "1969-07-12",
-    "Password": "password",
-    "Projects": [{
-      "ProjectName": "Medcom",
-      "CompanyId": "1"
-    }]
+    "LastActive": "2019-09-20T06:37:26",
+    "DateOfBirth": "2000-09-20T00:00:00",
+    "Password": "password"
   },
   {
     "Email": "merrittrosa@wp.com",
     "Name": "Gaines",
     "Surname": "Buchanan",
     "Gender": "mężczyzna",
-    "LastActive": "2017-02-26",
-    "DateOfBirth": "1954-02-01",
-    "Password": "password",
-    "Projects": [{
-      "ProjectName": "Avenue",
-      "CompanyId": "1"
-    }]
+    "LastActive": "2019-09-20T06:37:26",
+    "DateOfBirth": "2000-09-20T00:00:00",
+    "Password": "password"
   }
 ]

@@ -51,8 +51,8 @@ namespace timesheet.api.Migrations
                     ProjectStart = table.Column<DateTime>(nullable: true),
                     Deadline = table.Column<DateTime>(nullable: true),
                     IsFinished = table.Column<bool>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
-                    SpentHours = table.Column<float>(nullable: false)
+                    SpentHours = table.Column<float>(nullable: false),
+                    UserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -68,7 +68,7 @@ namespace timesheet.api.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

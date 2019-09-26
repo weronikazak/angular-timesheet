@@ -9,7 +9,7 @@ using TimeSheet.API.Data;
 namespace timesheet.api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190921122603_Initial")]
+    [Migration("20190926161143_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +35,7 @@ namespace timesheet.api.Migrations
 
                     b.Property<float>("SpentHours");
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.HasKey("ProjectId");
 
@@ -131,14 +131,13 @@ namespace timesheet.api.Migrations
             modelBuilder.Entity("TimeSheet.API.Data.Project", b =>
                 {
                     b.HasOne("TimeSheet.API.Models.Company", "Company")
-                        .WithMany()
+                        .WithMany("Projects")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TimeSheet.API.Data.User", "User")
+                    b.HasOne("TimeSheet.API.Data.User")
                         .WithMany("Projects")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("TimeSheet.API.Models.Group", b =>

@@ -7,6 +7,6 @@ namespace TimeSheet.API.Models
     {
         public int CompanyId { get; set; }
         public string CompanyName { get; set; }
-        public ICollection<Project> CompanyProjects { get; set; }
+        public ICollection<Project> Projects { get; set; }
     }
 }

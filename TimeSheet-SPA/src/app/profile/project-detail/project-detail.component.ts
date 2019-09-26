@@ -14,6 +14,7 @@ export class ProjectDetailComponent implements OnInit {
   project: Project;
   pictureUrl = '../../assets/project_img.png';
 
+
   constructor(private route: ActivatedRoute, private alertify: AlertifyService, private projectservice: ProjectService) { }
 
   ngOnInit() {

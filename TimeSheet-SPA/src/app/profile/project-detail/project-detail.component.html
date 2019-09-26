@@ -16,12 +16,18 @@
                 <strong>Zlecenie projektu</strong>
                 <p>{{project?.projectStart}}</p>
             </div>
-            <!-- <button class="btn-success btn col-sm-12" [disabled]="!editForm.dirty" form="editForm"> Zapisz </button> -->
+            <button class="btn-success btn col-sm-12" form="editForm"> Dołącz </button>
           </div>
         </div>
       </div>
       <div class="col-sm-8">
-        <p>WYKRESY ITD</p>
+        <div>
+        <app-chart-doughnut></app-chart-doughnut>
+        </div>
+        <br/><br/><br/>
+          <div>
+            <app-chart-bar></app-chart-bar>
+          </div>
       </div>
     </div>
   </div>

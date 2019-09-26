@@ -1,0 +1,11 @@
+.project-finished {
+    background: gray !important;
+}
+
+.project-deadline {
+    background: red !important;
+}
+
+.project-inprogress {
+    background: green !important;
+}

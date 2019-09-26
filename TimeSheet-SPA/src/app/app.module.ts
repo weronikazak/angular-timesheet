@@ -36,6 +36,9 @@ import { AddProjectComponent } from './projects/add-project/add-project.componen
 import { CompanyListComponent } from './companies/company-list/company-list.component';
 import { ProjectService } from './_services/project.service';
 import { CompanyService } from './_services/company.service';
+import { ChartsModule } from 'ng2-charts';
+import { ChartDoughnutComponent } from './charts/chart-doughnut/chart-doughnut.component';
+import { ChartBarComponent } from './charts/chart-bar/chart-bar.component';
 // import { tokenKey } from '@angular/core/src/view';
 
 export function tokenGetter() {
@@ -59,7 +62,9 @@ export function tokenGetter() {
       ProjectListAllComponent,
       ProjectDetailComponent,
       AddProjectComponent,
-      CompanyListComponent
+      CompanyListComponent,
+      ChartDoughnutComponent,
+      ChartBarComponent
    ],
    imports: [
       BrowserModule,
@@ -73,6 +78,7 @@ export function tokenGetter() {
       BsDatepickerModule.forRoot(),
       TypeaheadModule.forRoot(),
       ReactiveFormsModule,
+      ChartsModule,
       JwtModule.forRoot({
          config: {
             tokenGetter: tokenGetter,

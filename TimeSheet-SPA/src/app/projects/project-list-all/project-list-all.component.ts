@@ -15,6 +15,7 @@ export class ProjectListAllComponent implements OnInit {
   single_project: string;
   lookForProject = new FormControl('');
   noResult = false;
+  soonDeadline = false;
 
   constructor(private projectService: ProjectService, private alertify: AlertifyService) { }
 
@@ -31,6 +32,17 @@ export class ProjectListAllComponent implements OnInit {
 
   typeaheadNoResults(event: boolean): void {
     this.noResult = event;
+  }
+
+  deadlinePassed(project: Project) {
+    const today = new Date();
+    today.setDate(today.getDate() - 3);
+    if (new Date() > new Date(project.deadline)) {
+      this.soonDeadline = true;
+    } else {
+      this.soonDeadline = false;
+    }
+    return this.soonDeadline;
   }
 
 }

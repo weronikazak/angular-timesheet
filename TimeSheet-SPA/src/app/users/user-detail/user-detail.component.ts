@@ -11,6 +11,7 @@ import { User } from 'src/app/_models/user';
 })
 export class UserDetailComponent implements OnInit {
   user: User;
+  userUrl = '../../assets/user_img.png';
 
   constructor(private userService: UserService, private route: ActivatedRoute, private alertify: AlertifyService) { }
 
@@ -23,7 +24,7 @@ export class UserDetailComponent implements OnInit {
       this.user = user;
     }, error => {
       this.alertify.error(error);
-    })
+    });
   }
 
 }
