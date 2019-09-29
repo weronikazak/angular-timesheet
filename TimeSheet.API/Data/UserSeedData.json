@@ -1,6 +1,7 @@
 [
   {
     "Email": "nunezoneil@temorak.com",
+    "UserPhoto": "../../assets/female_img.png",
     "Name": "Lola",
     "Gender": "kobieta",
     "Surname": "Bauer",
@@ -10,6 +11,7 @@
   },
   {
     "Email": "genacobb@dancity.com",
+    "UserPhoto": "../../assets/female_img.png",
     "Name": "Lucille",
     "Surname": "Reynolds",
     "Gender": "kobieta",
@@ -19,6 +21,7 @@
   },
   {
     "Email": "veleznoble@nipaz.com",
+    "UserPhoto": "../../assets/male_img.png",
     "Name": "Bob",
     "Surname": "Massey",
     "Gender": "mężczyzna",
@@ -28,6 +31,7 @@
   },
   {
     "Email": "roslyngilmore@gmail.com",
+    "UserPhoto": "../../assets/male_img.png",
     "Name": "Mark",
     "Surname": "Welch",
     "Gender": "mężczyzna",
@@ -37,6 +41,7 @@
   },
   {
     "Email": "merrittrosa@wp.com",
+    "UserPhoto": "../../assets/male_img.png",
     "Name": "Gaines",
     "Surname": "Buchanan",
     "Gender": "mężczyzna",

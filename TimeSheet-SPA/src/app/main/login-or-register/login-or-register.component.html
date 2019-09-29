@@ -49,7 +49,7 @@
       <input type="email" class="form-control"
         [ngClass]="{'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}"
         placeholder="Email użytkownika" autofocus
-        formControlName="email">
+        formControlName="email" pattern=".+@.+">
         <div class="invalid-feedback">Podaj swój email.</div>
 
       <input type="text" class="form-control"
@@ -74,14 +74,14 @@
               formControlName="birthDate">
               <div class="invalid-feedback">Hm, coś jest nie tak z tą datą urodzenia.</div>
 
-    <div class="form-group">
-      <label class="radio-inline">
-        <input class="mr-3" type="radio" value="male" formControlName="gender">Mężczyzna
-      </label>
-      <label class="radio-inline ml-3">
-        <input class="mr-3" type="radio" value="female" formControlName="gender">Kobieta
-      </label>
-    </div>            
+      <div class="form-group">
+        <label class="radio-inline">
+          <input class="mr-3" type="radio" value="mężczyzna" formControlName="gender">Mężczyzna
+        </label>
+        <label class="radio-inline ml-3">
+          <input class="mr-3" type="radio" value="kobieta" formControlName="gender">Kobieta
+        </label>
+      </div>      
     
       <input type="password" class="form-control"
       formControlName="password"

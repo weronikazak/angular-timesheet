@@ -6,7 +6,8 @@ namespace TimeSheet.API.Dto
 {
     public class UserForDetailedDto
     {
-         public int UserId { get; set; }
+        public int UserId { get; set; }
+        public string UserPhoto { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

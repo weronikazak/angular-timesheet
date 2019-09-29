@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img src="{{userUrl}}" alt="" class="card-img-top img-thumbnail">
+        <img src="{{user?.gender=='kobieta'? femaleUrl : maleUrl}}" alt="" class="card-img-top img-thumbnail">
         <div class="card-body text-center">
           <div>
             <h3>{{user?.name}} {{user?.surname}}</h3>

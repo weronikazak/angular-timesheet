@@ -28,25 +28,19 @@ namespace TimeSheet.API.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost("register")]
-        public async Task<IActionResult> RegisterUser(UserForRegisterDto userForRegisterDto){
-
-            //validate request
-            // if (!ModelState.IsValid)
-            //     return BadRequest(ModelState);
-
-            //userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
+        [HttpPost("register", Name="register")]
+        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto){
 
             if (await _repo.UserExists(userForRegisterDto.Email))
-                return BadRequest("User already exists");
+                return BadRequest("Użytkownik już istnieje");
 
             var userToCreate = _mapper.Map<User>(userForRegisterDto);
 
-            var createdUser = await _repo.RegisterUser(userToCreate, userForRegisterDto.Password);
+            var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
-            var userTReturn = _mapper.Map<UserForDetailedDto>(createdUser);
-
-            return CreatedAtRoute("GetUser", new {controller = "Users", id = createdUser.UserId}, userTReturn);
+            var userToReturn = _mapper.Map<UserForDetailedDto>(createdUser);
+            return Ok();
+            //return CreatedAtRoute("GetUser", new {controller = "User", id=createdUser.UserId}, userToReturn);
         }
 
         [HttpPost("login")]

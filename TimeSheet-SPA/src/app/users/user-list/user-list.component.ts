@@ -14,6 +14,8 @@ export class UserListComponent implements OnInit {
   hovering = false;
   selected: string;
   users_names: string[];
+  maleUrl = '../../assets/male_img.png';
+  femaleUrl = '../../assets/female_img.png';
 
   constructor(private userService: UserService, private authService: AuthService, private alertify: AlertifyService) { }
 

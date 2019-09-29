@@ -37,6 +37,7 @@ namespace TimeSheet.API.Controllers
         public async Task<IActionResult> GetUser(int id){
             var user = await _repo.GetUser(id);
             var userToRetrun = _mapper.Map<UserForDetailedDto>(user);
+
             return Ok(userToRetrun);
         }
 

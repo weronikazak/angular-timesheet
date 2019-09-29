@@ -11,6 +11,8 @@ import { Company } from 'src/app/_models/company';
 })
 export class CompanyListComponent implements OnInit {
   companies: Company[];
+  selected: string;
+  client_names: string[];
 
   constructor(private companyService: CompanyService, private http: HttpClient,
     private alertify: AlertifyService) { }
@@ -22,6 +24,7 @@ export class CompanyListComponent implements OnInit {
   loadCompanies() {
     this.companyService.getCompanies().subscribe((companies: Company[]) => {
       this.companies = companies;
+      this.client_names = companies.map(c => c.companyName);
     }, error => {
       this.alertify.error(error);
     });
