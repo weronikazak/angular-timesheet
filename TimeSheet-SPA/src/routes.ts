@@ -14,6 +14,7 @@ import { ProjectDetailResolver } from './app/_resolvers/project-detail.resolver'
 import { AddProjectComponent } from './app/projects/add-project/add-project.component';
 import { ProjectDetailComponent } from './app/profile/project-detail/project-detail.component';
 import { CompanyListComponent } from './app/companies/company-list/company-list.component';
+import { GroupCreateComponent } from './app/group/group-create/group-create.component';
 
 
 export const appRoutes: Routes = [
@@ -28,6 +29,7 @@ export const appRoutes: Routes = [
              resolve: {user: ProfileResolver},
              canDeactivate: [PreventUnsavedChangesGuard]},
             { path: 'members', component: UserListComponent},
+            { path: 'group/add', component: GroupCreateComponent},
             { path: 'projects/all', component: ProjectListAllComponent},
             { path: 'projects/add', component: AddProjectComponent},
             { path: 'companies', component: CompanyListComponent},

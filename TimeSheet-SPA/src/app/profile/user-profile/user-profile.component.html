@@ -9,11 +9,11 @@
           </div>
           <div>
             <strong>Data urodzenia:</strong>
-            <p>{{user.dateOfBirth}}</p>
+            <p>{{user.dateOfBirth | date}}</p>
           </div>
           <div>
               <strong>Ostatnio aktywny</strong>
-              <p>{{user.lastActive}}</p>
+              <p>{{user.lastActive | date:'medium'}}</p>
           </div>
           <button class="btn-warning btn col-sm-12" [disabled]="!editForm.dirty" form="editForm"> Zapisz </button>
         </div>

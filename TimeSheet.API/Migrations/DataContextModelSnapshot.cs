@@ -77,6 +77,18 @@ namespace timesheet.api.Migrations
 
                     b.Property<string>("CompanyName");
 
+                    b.Property<string>("KodPocztowy");
+
+                    b.Property<string>("Miasto");
+
+                    b.Property<int>("PhoneNumber");
+
+                    b.Property<string>("PrzedstawicielImie");
+
+                    b.Property<string>("PrzedstawicielNazwisko");
+
+                    b.Property<string>("Ulica");
+
                     b.HasKey("CompanyId");
 
                     b.ToTable("Companies");
@@ -134,7 +146,7 @@ namespace timesheet.api.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TimeSheet.API.Data.User")
-                        .WithMany("Projects")
+                        .WithMany("Groups")
                         .HasForeignKey("UserId");
                 });
 

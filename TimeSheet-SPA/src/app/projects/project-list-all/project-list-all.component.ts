@@ -16,6 +16,7 @@ export class ProjectListAllComponent implements OnInit {
   lookForProject = new FormControl('');
   noResult = false;
   soonDeadline = false;
+  selected: string;
 
   constructor(private projectService: ProjectService, private alertify: AlertifyService) { }
 
@@ -26,7 +27,7 @@ export class ProjectListAllComponent implements OnInit {
   loadProjects() {
     return this.projectService.getProjects().subscribe((projects: Project[]) => {
       this.projects = projects;
-      this.project_list = projects.map(m => m.projectName + ', ' + m.company.companyName);
+      this.project_list = projects.map(m => m.projectName.toUpperCase() + ', ' + m.company.companyName);
     }, error => this.alertify.error(error));
   }
 

@@ -1,6 +1,12 @@
 [
     {
       "CompanyName": "Conferia",
+      "PrzedstawicielImie":"Wojciech",
+      "PrzedstawicielNazwisko":"Smolarczyk",
+      "Ulica": "Kwiatkowa 12",
+      "Miasto": "Warszawa",
+      "KodPocztowy": "02-444",
+      "PhoneNumber": "222333444",
       "Projects": [{
         "ProjectName": "Brighton",
         "ProjectStart": "2019-09-20T06:37:26",
@@ -11,6 +17,12 @@
     },
     {
       "CompanyName": "Kengen",
+      "PrzedstawicielImie":"Wiktoria",
+      "PrzedstawicielNazwisko":"Poniatowska",
+      "Ulica": "Kielecka 12",
+      "Miasto": "Krakóow",
+      "KodPocztowy": "34-324",
+      "PhoneNumber": "999999999",
       "Projects": [{
         "ProjectName": "Avenue",
         "ProjectStart": "2019-09-20T06:37:26",

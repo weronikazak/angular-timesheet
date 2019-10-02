@@ -39,6 +39,9 @@ import { CompanyService } from './_services/company.service';
 import { ChartsModule } from 'ng2-charts';
 import { ChartDoughnutComponent } from './charts/chart-doughnut/chart-doughnut.component';
 import { ChartBarComponent } from './charts/chart-bar/chart-bar.component';
+import { AddCompanyComponent } from './companies/add-company/add-company.component';
+import { SingleProjectAddComponent } from './projects/single-project-add/single-project-add.component';
+import { GroupCreateComponent } from './group/group-create/group-create.component';
 // import { tokenKey } from '@angular/core/src/view';
 
 export function tokenGetter() {
@@ -64,7 +67,10 @@ export function tokenGetter() {
       AddProjectComponent,
       CompanyListComponent,
       ChartDoughnutComponent,
-      ChartBarComponent
+      ChartBarComponent,
+      AddCompanyComponent,
+      SingleProjectAddComponent,
+      GroupCreateComponent
    ],
    imports: [
       BrowserModule,

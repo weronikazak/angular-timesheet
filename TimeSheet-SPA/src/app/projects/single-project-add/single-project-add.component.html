@@ -1,0 +1,28 @@
+<div>
+  <form [formGroup]="projectForm" #addProject="ngForm" class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Dodaj projekt</h1>
+    <div>
+        <input type="text" class="form-control mb-4"
+        [ngClass]="{'is-invalid': companyForm.get('projectName').errors && companyForm.get('projectName').touched}"
+        name="projectName"
+        formControlName="projectName"
+        placeholder="Nazwa projektu">
+        <div class="invalid-feedback">Nazwa jest obowiązkowa.</div>
+    </div>
+  
+    <div>
+      <input type="text"
+      class="form-control"
+      [ngClass]="{'is-invalid': projectForm.get('deadline').errors}"
+      #dp="bsDatepicker"
+      bsDatepicker
+      name="deadline"
+      formControlName="deadline">
+      <div class="invalid-feedback">Hm, coś jest nie tak z tą datą.</div>
+    </div>
+    <div class="btn-group mt-4" role="group">
+      <button [disabled]="!companyForm.valid" class="btn btn-lg btn-secondary" type="submit">Dalej</button>
+      <button class="btn btn-lg btn-secondary">Wróć</button>
+    </div>
+  </form>
+  </div>

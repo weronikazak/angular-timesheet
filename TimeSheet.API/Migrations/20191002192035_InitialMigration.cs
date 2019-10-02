@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace timesheet.api.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,13 @@ namespace timesheet.api.Migrations
                 {
                     CompanyId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CompanyName = table.Column<string>(nullable: true)
+                    CompanyName = table.Column<string>(nullable: true),
+                    PrzedstawicielImie = table.Column<string>(nullable: true),
+                    PrzedstawicielNazwisko = table.Column<string>(nullable: true),
+                    Ulica = table.Column<string>(nullable: true),
+                    Miasto = table.Column<string>(nullable: true),
+                    KodPocztowy = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -1,42 +1,40 @@
-<div class="row">
-  <div class="col-10">
-      <h3>Projekty</h3>
-  </div>
-  <div class="col-2">
-    <button class="btn btn-warning"><i class="fa fa-plus" [routerLink]="['/projects/add']" routerLinkActive="router-link-active"></i> </button>
-  </div>
+<h3>Projekty</h3>
+<div class="alert alert-primary">
+<div class="input-group">
+    <input [(ngModel)]="selected"
+    [typeahead]="project_list"
+    class="form-control"
+    (typeaheadNoResults)="typeaheadNoResults($event)"
+    placeholder="Szukaj użytkownika">
+    <span class="input-group-btn">
+         <button [routerLink]="['/projects/add']" routerLinkActive="router-link-active" class="btn btn-default" type="button"  style="color: white"><i class="fa fa-plus"></i>Dodaj projekt</button>
+    </span>
+ </div>
 </div>
-
-<div class="alert alert-warning">
-  <input [(ngModel)]="single_project"
-  [typeahead]="project_list"
-  (typeaheadNoResults)="typeaheadNoResults($event)"
-  class="form-control"
-  placeholder="Szukaj projektu">
-</div>
-
 <div class="alert alert-danger" *ngIf="noResult">No Results Found</div>
 
-<div class="container">
-<table class="table table-striped col-lg-10">
+<div class>
+<table class="table table-striped">
     <thead>
       <tr>
+        <th scope="col">#</th>
         <th scope="col">Projekt</th>
         <th scope="col" >Firma</th>
+        <th scope="col" >Deadline</th>
         <th scope="col">Szczegóły</th>
       </tr>
     </thead>
     <tbody>
-      <div *ngFor="let project of projects">
-      <tr>
-        <td class="text-uppercase">{{project.projectName}}</td>
-        <td class="col-lg-3">{{project.company.companyName}}</td>
+      <tr *ngFor="let project of projects">
+        <th scope="row">{{project.projectId}}</th>
+        <th class="text-uppercase">{{project.projectName}}</th>
+        <td>{{project.company.companyName}}</td>
+        <td>{{project?.deadline | date:'medium'}}</td>
         <td>
           <a href="#" class="btn btn-primary" [routerLink]="['/projects/', project.projectId]" routerLinkActive="router-link-active">
           Zobacz szczegóły
         </a></td>
       </tr>
-    </div>
     </tbody>
   </table>
 </div>

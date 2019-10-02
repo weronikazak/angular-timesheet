@@ -1,25 +1,29 @@
-<div class="container mt-4">
-    <div class="row">
-      <div class="col-sm-4">
+<h4 class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<i class="fa fa-arrow-left" aria-hidden="true"></i>
+</h4>
+<div class="container-fluid text-center">
+    <div class="container text-center text-container col-lg-4 col-md-6 col-sm-10" *ngIf="!registrationMode">
         <div class="card">
-          <img src="" alt="" class="card-img-top img-thumbnail">
           <div class="card-body">
-            <div>
-              <label>Nazwa projektu</label>
-              <input type="text" [ngModel]="">
+            <div class="form-signin" *ngIf="!addProject">
+      
+            <h1 class="h3 mb-3 font-weight-normal">Wybierz klienta</h1>
+          
+            <input [(ngModel)]="selected"
+            [typeahead]="companyList"
+            class="form-control"
+            placeholder="Szukaj klienta">
             </div>
-            <div>
-                <label>Nazwa firmy</label>
-                <input type="text" [ngModel]="">
-            </div>
-            <div>
-                <strong>Deadline</strong>
-                <!-- TO DO WSTAWIĆ DATEPICKER -->
-                <input type="text" [ngModel]="">
-            </div>
-            <button class="btn-success btn col-sm-12" [disabled]="!editForm.dirty" form="editForm"> Zapisz </button>
+
+            <app-add-company (addProject)="addProject" *ngIf="addProject"></app-add-company>
+
+            <div class="btn-group mt-4" role="group" *ngIf="!addProject" >
+                <button class="btn btn-lg btn-primary" (click)="addProject=true" type="submit">Dodaj klienta</button>
+                <button [disabled]="selected=='' || !selected || !addProject" class="btn btn-lg btn-secondary" type="submit">Dalej</button>
+              </div>
           </div>
+          
         </div>
       </div>
-    </div>
-  </div>
+      
+                  

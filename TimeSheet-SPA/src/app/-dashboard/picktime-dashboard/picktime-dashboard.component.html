@@ -25,7 +25,7 @@
   <div class="row col-lg-12 text-center">
     <div class="col-lg-1 ml-4">
       <label> OD </label>
-      <p>{{starttime.getHours()}}:{{starttime.getMinutes()}}</p>
+      <p>{{starttime | date:'shortTime'}}</p>
     </div>
     <div>
         <br/>
@@ -33,7 +33,7 @@
         </div>
     <div class="col-lg-1">
       <label>DO</label>
-        <p>{{endtime.getHours()}}:{{endtime.getMinutes()}} </p>
+        <p>{{endtime | date:'shortTime'}} </p>
       </div>
     <div class="col-lg-2">
       <label>CZAS PRACY</label>
@@ -41,7 +41,7 @@
     </div>
     <div class="col-lg-2">
       <label>DATA</label>
-      <p> {{mytime.getUTCDate()}}.{{mytime.getUTCMonth()}}.{{mytime.getFullYear()}} </p>
+      <p> {{mytime | date:'shortDate'}} </p>
     </div>
     <div class="col-lg-3">
       <label>PROJEKT</label>
