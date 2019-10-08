@@ -5,7 +5,7 @@
     <div class="container text-center text-container col-lg-4 col-md-6 col-sm-10" *ngIf="!registrationMode">
         <div class="card">
           <div class="card-body">
-            <div class="form-signin" *ngIf="!addProject">
+            <div class="form-signin" *ngIf="!addClient">
       
             <h1 class="h3 mb-3 font-weight-normal">Wybierz klienta</h1>
           
@@ -15,11 +15,11 @@
             placeholder="Szukaj klienta">
             </div>
 
-            <app-add-company (addProject)="addProject" *ngIf="addProject"></app-add-company>
+            <app-add-company (addProject)="addClient" *ngIf="addClient"></app-add-company>
 
-            <div class="btn-group mt-4" role="group" *ngIf="!addProject" >
-                <button class="btn btn-lg btn-primary" (click)="addProject=true" type="submit">Dodaj klienta</button>
-                <button [disabled]="selected=='' || !selected || !addProject" class="btn btn-lg btn-secondary" type="submit">Dalej</button>
+            <div class="btn-group mt-4" role="group" *ngIf="!addClient" >
+                <button class="btn btn-lg btn-primary" (click)="addClient=true" type="submit">Dodaj klienta</button>
+                <button [disabled]="selected=='' || !selected || !addClient" class="btn btn-lg btn-secondary" type="submit">Dalej</button>
               </div>
           </div>
           

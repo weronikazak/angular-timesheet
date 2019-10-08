@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using TimeSheet.API.Helpers;
 using TimeSheet.API.Models;
 
 namespace TimeSheet.API.Data
@@ -22,6 +23,14 @@ namespace TimeSheet.API.Data
         public void Delete<T>(T entity) where T : class
         {
             _context.Remove(entity);
+        }
+
+        // public async Task<Group> GetWorkerGroups(int workerId) {
+        //      return await _context.Groups.Where(u => u.Members.Contains(u.)).ToListAsync();
+        // }
+
+        public async Task<ICollection<Project>> GetGroupProjects(int groupId) {
+            return await _context.Projects.Where(u => u.GroupId == groupId).ToListAsync();
         }
 
         public async Task<IEnumerable<Company>> GetCompanies()
@@ -58,12 +67,27 @@ namespace TimeSheet.API.Data
             return user;
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
-            var users = await _context.Users.ToListAsync();
+            var users =  _context.Users.OrderByDescending(u => u.LastActive).AsQueryable();
 
-            return users;
+            users = users.Where(u => u.UserId != userParams.UserId);
+
+            if (!string.IsNullOrEmpty(userParams.OrderBy)) {
+                switch (userParams.OrderBy) {
+                    default:
+                        users = users.OrderByDescending(u => u.LastActive);
+                        break;
+                }
+            }
+
+            return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
+
+        // public Task<IEnumerable<User>> GetUsers()
+        // {
+        //     throw new System.NotImplementedException();
+        // }
 
         public async Task<bool> SaveAll()
         {

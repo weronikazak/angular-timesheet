@@ -42,6 +42,8 @@ import { ChartBarComponent } from './charts/chart-bar/chart-bar.component';
 import { AddCompanyComponent } from './companies/add-company/add-company.component';
 import { SingleProjectAddComponent } from './projects/single-project-add/single-project-add.component';
 import { GroupCreateComponent } from './group/group-create/group-create.component';
+import { FilterNamePipePipe } from 'src/filter-name-pipe.pipe';
+import { TimeAgoPipe  } from 'time-ago-pipe';
 // import { tokenKey } from '@angular/core/src/view';
 
 export function tokenGetter() {
@@ -70,7 +72,9 @@ export function tokenGetter() {
       ChartBarComponent,
       AddCompanyComponent,
       SingleProjectAddComponent,
-      GroupCreateComponent
+      GroupCreateComponent,
+      FilterNamePipePipe,
+      TimeAgoPipe
    ],
    imports: [
       BrowserModule,

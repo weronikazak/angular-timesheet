@@ -37,7 +37,7 @@
       </div>
     <div class="col-lg-2">
       <label>CZAS PRACY</label>
-      <p>{{endtime.getHours() - starttime.getHours()}}:{{endtime.getMinutes() - starttime.getMinutes()}} </p>
+      <p>{{czas_pracy}} </p>
     </div>
     <div class="col-lg-2">
       <label>DATA</label>
@@ -46,7 +46,11 @@
     <div class="col-lg-3">
       <label>PROJEKT</label>
       <br/>
-      <input type="text" class="form-control" placeholder="Nazwa projektu">
+      <input [(ngModel)]="selected"
+        [typeahead]="project_list"
+        class="form-control"
+        (typeaheadNoResults)="typeaheadNoResults($event)"
+        placeholder="Szukaj użytkownika">
     </div>
     <div class="col-lg-2">
     <br/>

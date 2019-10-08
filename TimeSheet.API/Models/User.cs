@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TimeSheet.API.Models;
 
 namespace TimeSheet.API.Data
 {
@@ -14,6 +15,6 @@ namespace TimeSheet.API.Data
         public DateTime LastActive { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
-        public ICollection<Project> Groups { get; set; }
+        public ICollection<Group> Groups { get; set; }
     }
 }

@@ -14,7 +14,7 @@ export class AddProjectComponent implements OnInit {
   baseUrl = environment.apiUrl;
   companyList: string[];
   selected: string;
-  addProject = false;
+  addClient = false;
 
   constructor(private companyService: CompanyService) { }
 
@@ -26,6 +26,10 @@ export class AddProjectComponent implements OnInit {
     this.companyService.getCompanies().subscribe((companies: Company[]) => {
       this.companyList = companies.map(c => c.companyName);
     });
+  }
+
+  toggleAddClient() {
+    this.addClient = !this.addClient;
   }
 
 }

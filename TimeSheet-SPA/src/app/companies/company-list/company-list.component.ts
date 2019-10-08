@@ -11,7 +11,7 @@ import { Company } from 'src/app/_models/company';
 })
 export class CompanyListComponent implements OnInit {
   companies: Company[];
-  selected: string;
+  selected: Company;
   client_names: string[];
 
   constructor(private companyService: CompanyService, private http: HttpClient,

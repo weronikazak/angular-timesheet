@@ -1,9 +1,18 @@
 <div class="container-fluid">
   <h3 class="text-center">Twoja grupa</h3>
 <div class="inline-block">
-  <div class="card" style="height: 15rem;">
+  <div class="card" style="height: 18rem;">
+    <div class="alert alert-primary">
+      <div class="input-group">
+          <input [(ngModel)]="selected"
+          class="form-control"
+          placeholder="Szukaj użytkownika">
+       </div>
+      </div>
     <div class="card-body">
-      Uwu
+      <div *ngFor="let user of users | filter : selected">
+        {{user.name}} {{user.surname}}
+      </div>
     </div>
   </div>
 </div>
