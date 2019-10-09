@@ -29,9 +29,24 @@ namespace TimeSheet.API.Data
         //      return await _context.Groups.Where(u => u.Members.Contains(u.)).ToListAsync();
         // }
 
-        public async Task<ICollection<Project>> GetGroupProjects(int groupId) {
-            return await _context.Projects.Where(u => u.GroupId == groupId).ToListAsync();
+        public async Task<ICollection<Project>> GetProjectsForGroup(int groupId) {
+            return await _context.Projects
+                .Where(u => u.GroupId == groupId).ToListAsync();
         }
+
+        public async Task<ICollection<Project>> GetProjectsForCompany(int companyId) {
+            return await _context.Projects
+                .Where(u => u.CompanyId == companyId)
+                .OrderByDescending(u => u.ProjectStart)
+                .ToListAsync();
+        }
+
+        // public async Task<ICollection<User>> GetUsersForGroup(int groupId) {
+        //     //var users = from _context.Users where groupId == 1;
+        //     //return await _context.Users.Include(u => u.Groups);
+
+        //     return await _context.Users.FindAsync(u => u.);
+        // }
 
         public async Task<IEnumerable<Company>> GetCompanies()
         {
@@ -83,11 +98,6 @@ namespace TimeSheet.API.Data
 
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
-
-        // public Task<IEnumerable<User>> GetUsers()
-        // {
-        //     throw new System.NotImplementedException();
-        // }
 
         public async Task<bool> SaveAll()
         {

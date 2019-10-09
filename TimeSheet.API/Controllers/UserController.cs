@@ -64,5 +64,18 @@ namespace TimeSheet.API.Controllers
 
             throw new Exception("Wystapil blad podczas aktualizowania uzytkownika.");
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id) {
+            var user = _repo.GetUser(id);
+
+            _repo.Delete(user);
+
+            if (await _repo.SaveAll()) {
+                return CreatedAtAction("GetUsers", new {});
+            }
+
+            throw new Exception("Cos poszlo nie tak podczas usuwania uzytkownika");
+        }
     }
 }

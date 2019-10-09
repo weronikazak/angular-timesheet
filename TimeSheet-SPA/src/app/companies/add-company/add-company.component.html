@@ -7,22 +7,24 @@
       name="companyName"
       formControlName="companyName"
       placeholder="Nazwa firmy">
-      <div class="invalid-feedback">Firma jest obowiązkowa.</div>
+  <div class="invalid-feedback">Firma jest obowiązkowa.</div>
+
   </div>
   <div>
       <input type="text"
         class="form-control  mb-4"
-      [ngClass]="{'is-invalid': companyForm.get('przedstawicielImie').errors && companyForm.get('przedstawicielImie').touched}"
       name="przedstawicielImie"
         formControlName="przedstawicielImie"
-        placeholder="Imię przedstawiciela">
+        placeholder="Imię przedstawiciela (nieobowiązkowe)">
+
   </div>
   <div>
     <input type="text"
       class="form-control mb-4"
       name="przedstawicielNazwisko"
       formControlName="przedstawicielNazwisko"
-      placeholder="Nazwisko przedstawiciela">
+      placeholder="Nazwisko przedstawiciela (nieobowiązkowe)">
+
 </div>
   <div>
         <input type="text"
@@ -31,6 +33,8 @@
           placeholder="Miasto"
           name="miasto"
           formControlName="miasto">
+  <div class="invalid-feedback">Miasto jest obowiazkowe.</div>
+
     </div>
     <div>
         <input type="text"
@@ -38,6 +42,8 @@
           name="ulica"
           placeholder="Ulica"
           formControlName="ulica">
+  <div class="invalid-feedback">Ulica jest obowiązkowa.</div>
+
     </div>
   <div>
       <input type="text"
@@ -46,6 +52,8 @@
         name="phoneNumber"
         formControlName="phoneNumber"
         placeholder="Numer">
+  <div class="invalid-feedback">Numer komórkowy jest obowiązkowy.</div>
+
   </div>
   <div class="btn-group mt-4" role="group">
     <button [disabled]="!companyForm.valid" class="btn btn-lg btn-secondary" type="submit">Dalej</button>

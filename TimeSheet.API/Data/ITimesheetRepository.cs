@@ -12,6 +12,8 @@ namespace TimeSheet.API.Data
         void Delete<T>(T entity) where T: class;
         // Task GetOne<T>(int id) where T: class;
         // Task<IEnumerable> GetList<T>()where T: class;
+        Task<ICollection<Project>> GetProjectsForGroup(int groupId);
+        Task<ICollection<Project>> GetProjectsForCompany(int companyId);
         Task<bool> SaveAll();
         Task<PagedList<User>> GetUsers(UserParams userParams);
         Task<User> GetUser(int id);

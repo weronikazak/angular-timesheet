@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace timesheet.api.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,8 +57,8 @@ namespace timesheet.api.Migrations
                     ProjectStart = table.Column<DateTime>(nullable: true),
                     Deadline = table.Column<DateTime>(nullable: true),
                     IsFinished = table.Column<bool>(nullable: false),
-                    SpentHours = table.Column<float>(nullable: false),
-                    UserId = table.Column<int>(nullable: true)
+                    GroupId = table.Column<int>(nullable: true),
+                    SpentHours = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,12 +69,6 @@ namespace timesheet.api.Migrations
                         principalTable: "Companies",
                         principalColumn: "CompanyId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Projects_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -109,7 +103,8 @@ namespace timesheet.api.Migrations
                     HeadOfProjectId = table.Column<int>(nullable: false),
                     TimeStart = table.Column<DateTime>(nullable: false),
                     TimeEnd = table.Column<DateTime>(nullable: true),
-                    SpentHours = table.Column<float>(nullable: false)
+                    SpentHours = table.Column<float>(nullable: false),
+                    UserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -120,6 +115,12 @@ namespace timesheet.api.Migrations
                         principalTable: "Worker",
                         principalColumn: "WorkerId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Groups_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -128,14 +129,19 @@ namespace timesheet.api.Migrations
                 column: "HeadOfProjectId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Groups_UserId",
+                table: "Groups",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Projects_CompanyId",
                 table: "Projects",
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projects_UserId",
+                name: "IX_Projects_GroupId",
                 table: "Projects",
-                column: "UserId");
+                column: "GroupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Worker_GroupId",
@@ -146,6 +152,14 @@ namespace timesheet.api.Migrations
                 name: "IX_Worker_UserId",
                 table: "Worker",
                 column: "UserId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Projects_Groups_GroupId",
+                table: "Projects",
+                column: "GroupId",
+                principalTable: "Groups",
+                principalColumn: "GroupId",
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Worker_Groups_GroupId",

@@ -25,6 +25,8 @@ namespace timesheet.api.Migrations
 
                     b.Property<DateTime?>("Deadline");
 
+                    b.Property<int?>("GroupId");
+
                     b.Property<bool>("IsFinished");
 
                     b.Property<string>("ProjectName");
@@ -33,13 +35,11 @@ namespace timesheet.api.Migrations
 
                     b.Property<float>("SpentHours");
 
-                    b.Property<int?>("UserId");
-
                     b.HasKey("ProjectId");
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("GroupId");
 
                     b.ToTable("Projects");
                 });
@@ -107,9 +107,13 @@ namespace timesheet.api.Migrations
 
                     b.Property<DateTime>("TimeStart");
 
+                    b.Property<int?>("UserId");
+
                     b.HasKey("GroupId");
 
                     b.HasIndex("HeadOfProjectId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Groups");
                 });
@@ -145,9 +149,9 @@ namespace timesheet.api.Migrations
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TimeSheet.API.Data.User")
-                        .WithMany("Groups")
-                        .HasForeignKey("UserId");
+                    b.HasOne("TimeSheet.API.Models.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupId");
                 });
 
             modelBuilder.Entity("TimeSheet.API.Models.Group", b =>
@@ -156,6 +160,10 @@ namespace timesheet.api.Migrations
                         .WithMany()
                         .HasForeignKey("HeadOfProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TimeSheet.API.Data.User")
+                        .WithMany("Groups")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("TimeSheet.API.Models.Worker", b =>

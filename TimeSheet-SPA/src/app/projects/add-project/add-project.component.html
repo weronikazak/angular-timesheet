@@ -19,7 +19,7 @@
 
             <div class="btn-group mt-4" role="group" *ngIf="!addClient" >
                 <button class="btn btn-lg btn-primary" (click)="addClient=true" type="submit">Dodaj klienta</button>
-                <button [disabled]="selected=='' || !selected || !addClient" class="btn btn-lg btn-secondary" type="submit">Dalej</button>
+                <button [disabled]="selected==='' || !selected" class="btn btn-lg btn-secondary" type="submit">Dalej</button>
               </div>
           </div>
           

@@ -8,8 +8,8 @@ namespace TimeSheet.API.Models
     {
         public int GroupId { get; set; }
         public int HeadOfProjectId { get; set; }
-        public Worker HeadOfProject { get; set; }
-        public ICollection<Worker> Members { get; set; }
+        public User HeadOfProject { get; set; }
+        public ICollection<User> Members { get; set; }
         public DateTime TimeStart { get; set; }
         public DateTime? TimeEnd { get; set; }
         public float SpentHours { get; set; }
