@@ -1,7 +1,7 @@
 import { Project } from './project';
 
 export interface Company {
-    companyId: number;
+    id: number;
     companyName: string;
     przedstawicielImie: string;
     przedstawicielNazwisko: string;

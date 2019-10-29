@@ -1,16 +1,16 @@
 import { Company } from './company';
-import { Group } from './group';
 import { User } from './user';
 
 export interface Project {
-    projectId: number;
+    id: number;
     projectName: string;
-    company: Company;
     companyId: number;
+    company: Company;
     projectStart?: Date;
     deadline?: Date;
     isFinished: boolean;
     userId: number;
     user: User;
     spentHours: number;
+    worker: Worker[];
 }

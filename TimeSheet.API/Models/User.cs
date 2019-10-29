@@ -6,7 +6,7 @@ namespace TimeSheet.API.Data
 {
     public class User
     {
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -15,6 +15,6 @@ namespace TimeSheet.API.Data
         public DateTime LastActive { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
-        public ICollection<Group> Groups { get; set; }
+        public ICollection<Worker> Workers { get; set; }
     }
 }

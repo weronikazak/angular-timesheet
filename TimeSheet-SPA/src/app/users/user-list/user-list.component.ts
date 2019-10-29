@@ -32,4 +32,10 @@ export class UserListComponent implements OnInit {
     });
   }
 
+  deleteUser(id: number) {
+    this.userService.deleteUser(id).subscribe(() => {
+      this.alertify.success('Pomyślnie usunięto użytkownika');
+    });
+  }
+
 }

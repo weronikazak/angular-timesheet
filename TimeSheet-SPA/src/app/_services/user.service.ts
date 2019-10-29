@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../_models/user';
+import { url } from 'inspector';
 
 
 @Injectable({
@@ -25,5 +26,7 @@ constructor(private http: HttpClient) { }
     return this.http.put(this.baseUrl + 'user/' + id, user);
   }
 
-  
+  deleteUser(id: number) {
+    return this.http.delete(this.baseUrl + 'user/' + id);
+  }
 }

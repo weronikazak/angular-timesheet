@@ -5,7 +5,7 @@ namespace TimeSheet.API.Models
 {
     public class Company
     {
-        public int CompanyId { get; set; }
+        public int Id { get; set; }
         public string CompanyName { get; set; }
         public string PrzedstawicielImie { get; set; }
         public string PrzedstawicielNazwisko { get; set; }

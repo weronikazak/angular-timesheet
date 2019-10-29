@@ -33,14 +33,14 @@ namespace TimeSheet.API.Controllers
             return Ok(companiesToReturn);
         }
 
-        [HttpGet("{id}", Name = "GetCompany")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetCompany(int id) {
             var company = await _repo.GetCompany(id);
 
             // DO ZMIANY
-            var companyToReturn = _mapper.Map<CompanyForRegisterDto>(company);
+            //var companyToReturn = _mapper.Map<CompanyForRegisterDto>(company);
 
-            return Ok(companyToReturn);
+            return Ok(company);
         }
 
         [HttpPost]
@@ -56,7 +56,7 @@ namespace TimeSheet.API.Controllers
             throw new Exception("Coś popszło nie tak podczas tworzenia firmy");
         }
 
-        [HttpPost("{id")]
+        [HttpPost("{id}")]
         public async Task<IActionResult> DeleteCompany(int id) {
             var company = await _repo.GetCompany(id);
 
@@ -85,7 +85,7 @@ namespace TimeSheet.API.Controllers
         public async Task<IActionResult> GetCompanyProjects(int id) {
             var company = await _repo.GetCompany(id);
 
-            var projects = _repo.GetProjectsForCompany(company.CompanyId);
+            var projects = _repo.GetProjectsForCompany(company.Id);
 
             var projectsToReturn = _mapper.Map<ProjectForListDto>(projects);
 

@@ -31,13 +31,13 @@ namespace TimeSheet.API.Data
 
         public async Task<ICollection<Project>> GetProjectsForGroup(int groupId) {
             return await _context.Projects
-                .Where(u => u.GroupId == groupId).ToListAsync();
+                .Where(u => u.Id == groupId).ToListAsync();
         }
 
         public async Task<ICollection<Project>> GetProjectsForCompany(int companyId) {
             return await _context.Projects
                 .Where(u => u.CompanyId == companyId)
-                .OrderByDescending(u => u.ProjectStart)
+                // .OrderByDescending(u => u.ProjectStart)
                 .ToListAsync();
         }
 
@@ -57,13 +57,13 @@ namespace TimeSheet.API.Data
 
         public async Task<Company> GetCompany(int id)
         {
-            var company = await _context.Companies.FirstOrDefaultAsync(c => c.CompanyId == id);
+            var company = await _context.Companies.FirstOrDefaultAsync(c => c.Id == id);
             return company;
         }
 
         public async Task<Project> GetProject(int id)
         {
-            var project = await _context.Projects.Include(u => u.Company).FirstOrDefaultAsync(p => p.ProjectId == id);
+            var project = await _context.Projects.Include(u => u.Company).FirstOrDefaultAsync(p => p.Id == id);
 
             return project;
         }
@@ -77,7 +77,7 @@ namespace TimeSheet.API.Data
 
         public async Task<User> GetUser(int id)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == id);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
             return user;
         }
@@ -86,7 +86,7 @@ namespace TimeSheet.API.Data
         {
             var users =  _context.Users.OrderByDescending(u => u.LastActive).AsQueryable();
 
-            users = users.Where(u => u.UserId != userParams.UserId);
+            users = users.Where(u => u.Id != userParams.UserId);
 
             if (!string.IsNullOrEmpty(userParams.OrderBy)) {
                 switch (userParams.OrderBy) {

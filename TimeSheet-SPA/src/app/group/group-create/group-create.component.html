@@ -1,25 +1,38 @@
-<div class="container-fluid">
+<div class="col-md-8 order-md-1 container">
   <h3 class="text-center">Twoja grupa</h3>
 <div class="inline-block">
   <div class="card" style="height: 18rem;">
-    <div class="alert alert-primary">
-      <div class="input-group">
-          <input [(ngModel)]="selected"
-          class="form-control"
-          placeholder="Szukaj użytkownika">
-       </div>
-      </div>
-    <div class="card-body">
-      <div *ngFor="let user of users | filter : selected">
-        {{user.name}} {{user.surname}}
-      </div>
-    </div>
+    <form [formGroup]="addGradeForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="student">Projekt</label>
+        <select class="form-control" id="student" required formControlName="studentId">
+          <option *ngFor="let student of studentList" name="student"
+           [ngValue]="student.id">
+           {{student.fullName}}</option>
+        </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="subject">Przedmiot</label>
+          <select class="form-control" id="subject" required formControlName="subjectId">
+            <option *ngFor="let subject of subjectList" [ngValue]="subject.id">
+              {{subject.subjectName}}</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="grade">Osoby</label>
+          <select class="form-control" id="grade" required formControlName="grade">
+            <option *ngFor="let grade of gradeList" [value]="grade">
+              {{grade}}</option>
+          </select>
+        </div>
+  
+      <hr class="mb-4">
+      <button class="btn btn-primary btn-lg btn-block mb-4" [disabled]="!addGradeForm.valid" type="submit">Dodaj ocene</button>
+    </form>
+  </div>
   </div>
 </div>
-<div class="inline-block">
-  <div class="card">
-    <div class="card-body">
-      <app-user-list></app-user-list>
-    </div>
-  </div>
-</div>
+<div>
+

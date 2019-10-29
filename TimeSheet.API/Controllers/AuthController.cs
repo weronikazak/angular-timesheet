@@ -53,7 +53,7 @@ namespace TimeSheet.API.Controllers
                 return Unauthorized();
 
             var claims = new[] {
-                new Claim(ClaimTypes.NameIdentifier, userFromRepo.UserId.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Surname, userFromRepo.Surname)
             };
 

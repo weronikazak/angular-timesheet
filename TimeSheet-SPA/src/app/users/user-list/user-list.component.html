@@ -20,10 +20,10 @@
             <div class="card-body">
               <h5 class="card-title">{{user.name}} <br /> {{user.surname}}</h5>
               <div>
-                <span class="badge badge-info mr-1" [routerLink]="['/members/', user.userId]" routerLinkActive="router-link-active" >
+                <span class="badge badge-info mr-1" [routerLink]="['/members/', user.id]" routerLinkActive="router-link-active" >
                   <i class="fa fa-info-circle m-1" aria-hidden="true"></i>
                 </span>         
-                <span class="badge badge-danger mr-1"> <i class="fa fa-trash  m-1" aria-hidden="true"></i></span>
+                <span class="badge badge-danger mr-1"> <i (click)="deleteUser(user.id)" class="fa fa-trash  m-1" aria-hidden="true"></i></span>
                 <span class="badge badge-success"><i class="fa fa-plus m-1" aria-hidden="true"></i></span>
               </div>
             </div>

@@ -1,9 +1,12 @@
 import { User } from './user';
+import { Role } from './role';
 
 export interface Worker {
-    workerId: number;
+    id: number;
+    userId: number;
     user: User;
-    role: string;
+    roleId: number;
+    role: Role;
     timeAdded: Date;
     timeSpent: number;
 }

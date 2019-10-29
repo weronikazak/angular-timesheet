@@ -9,8 +9,8 @@ using TimeSheet.API.Data;
 namespace timesheet.api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191009201700_Initial")]
-    partial class Initial
+    [Migration("20191029181547_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,35 +20,23 @@ namespace timesheet.api.Migrations
 
             modelBuilder.Entity("TimeSheet.API.Data.Project", b =>
                 {
-                    b.Property<int>("ProjectId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CompanyId");
 
-                    b.Property<DateTime?>("Deadline");
-
-                    b.Property<int?>("GroupId");
-
-                    b.Property<bool>("IsFinished");
-
                     b.Property<string>("ProjectName");
 
-                    b.Property<DateTime?>("ProjectStart");
-
-                    b.Property<float>("SpentHours");
-
-                    b.HasKey("ProjectId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CompanyId");
-
-                    b.HasIndex("GroupId");
 
                     b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("TimeSheet.API.Data.User", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateOfBirth");
@@ -67,14 +55,14 @@ namespace timesheet.api.Migrations
 
                     b.Property<string>("Surname");
 
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("TimeSheet.API.Models.Company", b =>
                 {
-                    b.Property<int>("CompanyId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CompanyName");
@@ -91,57 +79,43 @@ namespace timesheet.api.Migrations
 
                     b.Property<string>("Ulica");
 
-                    b.HasKey("CompanyId");
+                    b.HasKey("Id");
 
                     b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("TimeSheet.API.Models.Group", b =>
+            modelBuilder.Entity("TimeSheet.API.Models.Role", b =>
                 {
-                    b.Property<int>("GroupId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("HeadOfProjectId");
+                    b.Property<string>("RoleName");
 
-                    b.Property<float>("SpentHours");
+                    b.HasKey("Id");
 
-                    b.Property<DateTime?>("TimeEnd");
-
-                    b.Property<DateTime>("TimeStart");
-
-                    b.Property<int?>("UserId");
-
-                    b.HasKey("GroupId");
-
-                    b.HasIndex("HeadOfProjectId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Groups");
+                    b.ToTable("Role");
                 });
 
             modelBuilder.Entity("TimeSheet.API.Models.Worker", b =>
                 {
-                    b.Property<int>("WorkerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("GroupId");
+                    b.Property<int>("ProjectId");
 
-                    b.Property<string>("Role");
-
-                    b.Property<DateTime>("TimeAdded");
-
-                    b.Property<float>("TimeSpent");
+                    b.Property<int>("RoleId");
 
                     b.Property<int>("UserId");
 
-                    b.HasKey("WorkerId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("GroupId");
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("RoleId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Worker");
+                    b.ToTable("Workers");
                 });
 
             modelBuilder.Entity("TimeSheet.API.Data.Project", b =>
@@ -150,32 +124,22 @@ namespace timesheet.api.Migrations
                         .WithMany("Projects")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TimeSheet.API.Models.Group", "Group")
-                        .WithMany()
-                        .HasForeignKey("GroupId");
-                });
-
-            modelBuilder.Entity("TimeSheet.API.Models.Group", b =>
-                {
-                    b.HasOne("TimeSheet.API.Models.Worker", "HeadOfProject")
-                        .WithMany()
-                        .HasForeignKey("HeadOfProjectId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TimeSheet.API.Data.User")
-                        .WithMany("Groups")
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("TimeSheet.API.Models.Worker", b =>
                 {
-                    b.HasOne("TimeSheet.API.Models.Group")
-                        .WithMany("Members")
-                        .HasForeignKey("GroupId");
+                    b.HasOne("TimeSheet.API.Data.Project", "Project")
+                        .WithMany("Workers")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TimeSheet.API.Models.Role", "Role")
+                        .WithMany("Workers")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TimeSheet.API.Data.User", "User")
-                        .WithMany()
+                        .WithMany("Workers")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
