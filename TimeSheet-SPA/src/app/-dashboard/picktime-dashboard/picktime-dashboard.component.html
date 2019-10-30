@@ -23,18 +23,10 @@
   <!-- <h4 class="alert-heading">Oczekuje zatwierdzenia</h4> -->
 
   <div class="row col-lg-12 text-center">
-    <div class="col-lg-1 ml-4">
-      <label> OD </label>
-      <p>{{starttime | date:'shortTime'}}</p>
+    <div class="col-lg-2">
+      <label> OD / DO </label>
+      <p>{{starttime | date:'shortTime'}} - {{endtime | date:'shortTime'}}</p>
     </div>
-    <div>
-        <br/>
-          <p>---</p>
-        </div>
-    <div class="col-lg-1">
-      <label>DO</label>
-        <p>{{endtime | date:'shortTime'}} </p>
-      </div>
     <div class="col-lg-2">
       <label>CZAS PRACY</label>
       <p>{{czas_pracy}} </p>
@@ -43,28 +35,69 @@
       <label>DATA</label>
       <p> {{mytime | date:'shortDate'}} </p>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-2">
       <label>PROJEKT</label>
       <br/>
-      <input [(ngModel)]="selected"
+      <input class="form-control"
+        placeholder="Szukaj użytkownika">      
+        <!-- <input [(ngModel)]="selected"
         [typeahead]="project_list"
         class="form-control"
         (typeaheadNoResults)="typeaheadNoResults($event)"
-        placeholder="Szukaj użytkownika">
+        placeholder="Szukaj użytkownika"> -->
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-3">
+        <label>OPIS</label>
+        <br/>
+        <input class="form-control"
+          placeholder="Szukaj użytkownika"> 
+    </div>
+    <div class="col-lg-1">
     <br/>
-      <button class="btn btn-success btn-set"> Zatwierdź <i class="fa fa-check" aria-hidden="true"></i> </button>
+      <button class="btn btn-success btn-set"><i class="fa fa-check" aria-hidden="true"></i> </button>
     </div>
   </div>
 </div>
 
 
 <!-- <div *ngFor="let work of works m-4"> -->
-        <div class="alert alert-light mt-4">
+<div class="alert alert-light mt-4">
+  <h4 class="alert-heading">Zatwierdzone na dzień {{starttime | date}}</h4>
+<div *ngFor="let task of tasks">
+    <div class="row col-lg-12 text-center">
+        <div class="col-lg-2">
+          <p>{{starttime | date:'shortTime'}} - {{endtime | date:'shortTime'}}</p>
+        </div>
+        <div class="col-lg-2">
+          <p>{{czas_pracy}} </p>
+        </div>
+        <div class="col-lg-2">
+          <label>DATA</label>
+          <p> {{mytime | date:'shortDate'}} </p>
+        </div>
+        <div class="col-lg-2">
+          <br/>
+          <input class="form-control"
+            placeholder="Szukaj użytkownika">      
+            <!-- <input [(ngModel)]="selected"
+            [typeahead]="project_list"
+            class="form-control"
+            (typeaheadNoResults)="typeaheadNoResults($event)"
+            placeholder="Szukaj użytkownika"> -->
+        </div>
+        <div class="col-lg-3">
+            <br/>
+            <input class="form-control"
+              placeholder="Szukaj użytkownika"> 
+        </div>
+        <div class="col-lg-1">
+        <br/>
+        <button class="btn btn-danger btn-set"> <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        </div>
+      </div>
+</div>
             
-                <button class="btn btn-danger btn-set"> <i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                <h4 class="alert-heading">Zatwierdzone</h4>
-                <p>Praca zaczęta od 12:22 do 14:33</p>
+                
+                <!-- <p>Praca zaczęta od 12:22 do 14:33</p> -->
               </div>
 <!-- </div> -->
