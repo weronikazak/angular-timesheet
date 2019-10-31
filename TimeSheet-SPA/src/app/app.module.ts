@@ -13,7 +13,6 @@ import { LoginOrRegisterComponent } from './main/login-or-register/login-or-regi
 import { HomeComponent } from './main/home/home.component';
 import { ErrorInceptorProvide } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
-import { MainScreenComponent } from './-dashboard/main-screen/main-screen.component';
 import { TimepickerModule, TabsModule, BsDatepickerModule, TypeaheadModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
@@ -33,13 +32,11 @@ import { ProjectListAllComponent } from './projects/project-list-all/project-lis
 import { ProjectDetailResolver } from './_resolvers/project-detail.resolver';
 import { ProjectDetailComponent } from './profile/project-detail/project-detail.component';
 import { AddProjectComponent } from './projects/add-project/add-project.component';
-import { CompanyListComponent } from './companies/company-list/company-list.component';
 import { ProjectService } from './_services/project.service';
 import { CompanyService } from './_services/company.service';
 import { ChartsModule } from 'ng2-charts';
 import { ChartDoughnutComponent } from './charts/chart-doughnut/chart-doughnut.component';
 import { ChartBarComponent } from './charts/chart-bar/chart-bar.component';
-import { AddCompanyComponent } from './companies/add-company/add-company.component';
 import { SingleProjectAddComponent } from './projects/single-project-add/single-project-add.component';
 import { GroupCreateComponent } from './group/group-create/group-create.component';
 import { FilterNamePipePipe } from 'src/filter-name-pipe.pipe';
@@ -59,7 +56,6 @@ export function tokenGetter() {
       MainDesktopComponent,
       LoginOrRegisterComponent,
       HomeComponent,
-      MainScreenComponent,
       UserProfileComponent,
       PicktimeDashboardComponent,
       UserListComponent,
@@ -67,10 +63,8 @@ export function tokenGetter() {
       ProjectListAllComponent,
       ProjectDetailComponent,
       AddProjectComponent,
-      CompanyListComponent,
       ChartDoughnutComponent,
       ChartBarComponent,
-      AddCompanyComponent,
       SingleProjectAddComponent,
       GroupCreateComponent,
       FilterNamePipePipe,

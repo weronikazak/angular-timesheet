@@ -10,7 +10,7 @@ namespace TimeSheet.API.Data
         public string ProjectName { get; set; }
         public int CompanyId { get; set; }
         public Company Company { get; set; }
-        public ICollection<Worker> Workers { get; set; }
+        public ICollection<Raports> Raports { get; set; }
         //public DateTime? ProjectStart { get; set; }
         //public DateTime? Deadline { get; set; }
         //public bool IsFinished { get; set; }

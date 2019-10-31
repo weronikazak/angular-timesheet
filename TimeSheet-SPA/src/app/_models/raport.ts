@@ -1,7 +1,7 @@
 import { User } from './user';
 import { Role } from './role';
 
-export interface Worker {
+export interface Raport {
     id: number;
     userId: number;
     user: User;

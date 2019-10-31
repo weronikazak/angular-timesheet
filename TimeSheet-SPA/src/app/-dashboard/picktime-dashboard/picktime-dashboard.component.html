@@ -1,103 +1,88 @@
 <h2 class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">{{name | titlecase}}'s Dashboard</h2>
-<div class="row">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-3"> 
-        <h3> FROM </h3>
-        <timepicker [(ngModel)]="starttime" (isValid)="isValid = $event"></timepicker>
 
-        <button type="button" class="btn btn-primary" (click)="update(starttime)">Teraz</button>
-
-    </div>
-
-    <div class="col-lg-3"> 
-        <h3> TO </h3>
-        <timepicker [(ngModel)]="endtime" (isValid)="isValid = $event"></timepicker>
-
-        <button type="button" class="btn btn-primary" (click)="update(endtime)">Teraz</button>
-
-    </div>
-    <div class="col-lg-3"></div>
-</div>
-
-<div class="alert alert-primary mt-4">
-  <!-- <h4 class="alert-heading">Oczekuje zatwierdzenia</h4> -->
-
-  <div class="row col-lg-12 text-center">
-    <div class="col-lg-2">
-      <label> OD / DO </label>
-      <p>{{starttime | date:'shortTime'}} - {{endtime | date:'shortTime'}}</p>
-    </div>
-    <div class="col-lg-2">
-      <label>CZAS PRACY</label>
-      <p>{{czas_pracy}} </p>
-    </div>
-    <div class="col-lg-2">
-      <label>DATA</label>
-      <p> {{mytime | date:'shortDate'}} </p>
-    </div>
-    <div class="col-lg-2">
-      <label>PROJEKT</label>
-      <br/>
-      <input class="form-control"
-        placeholder="Szukaj użytkownika">      
-        <!-- <input [(ngModel)]="selected"
-        [typeahead]="project_list"
-        class="form-control"
-        (typeaheadNoResults)="typeaheadNoResults($event)"
-        placeholder="Szukaj użytkownika"> -->
-    </div>
-    <div class="col-lg-3">
-        <label>OPIS</label>
-        <br/>
-        <input class="form-control"
-          placeholder="Szukaj użytkownika"> 
-    </div>
-    <div class="col-lg-1">
-    <br/>
-      <button class="btn btn-success btn-set"><i class="fa fa-check" aria-hidden="true"></i> </button>
-    </div>
-  </div>
-</div>
-
-
-<!-- <div *ngFor="let work of works m-4"> -->
-<div class="alert alert-light mt-4">
-  <h4 class="alert-heading">Zatwierdzone na dzień {{starttime | date}}</h4>
-<div *ngFor="let task of tasks">
-    <div class="row col-lg-12 text-center">
-        <div class="col-lg-2">
-          <p>{{starttime | date:'shortTime'}} - {{endtime | date:'shortTime'}}</p>
-        </div>
-        <div class="col-lg-2">
-          <p>{{czas_pracy}} </p>
-        </div>
-        <div class="col-lg-2">
-          <label>DATA</label>
-          <p> {{mytime | date:'shortDate'}} </p>
-        </div>
-        <div class="col-lg-2">
-          <br/>
-          <input class="form-control"
-            placeholder="Szukaj użytkownika">      
-            <!-- <input [(ngModel)]="selected"
-            [typeahead]="project_list"
-            class="form-control"
-            (typeaheadNoResults)="typeaheadNoResults($event)"
-            placeholder="Szukaj użytkownika"> -->
-        </div>
-        <div class="col-lg-3">
-            <br/>
-            <input class="form-control"
-              placeholder="Szukaj użytkownika"> 
-        </div>
-        <div class="col-lg-1">
-        <br/>
-        <button class="btn btn-danger btn-set"> <i class="fa fa-trash-o" aria-hidden="true"></i></button>
-        </div>
-      </div>
-</div>
-            
-                
-                <!-- <p>Praca zaczęta od 12:22 do 14:33</p> -->
+<h4 class="alert-heading mt-4">Dodaj nowy wpis</h4>
+<div class="alert mt-4">
+<form>
+<table class="table  col-12 text-center">
+  <thead class="table-primary">
+    <tr>
+      <th scope="col">OD / DO</th>
+      <th scope="col">CZAS PRACY</th>
+      <th scope="col">DATA</th>
+      <th scope="col">PROJEKT</th>
+      <th scope="col">OPIS</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="row">
+            <div>
+              <input type="time" class="form-control" placeholder="OD" width="20">
+            </div>
+            <div>
+              <input type="time" class="form-control" placeholder="DO" width="20">
+            </div>
+          </div>
+      </td>
+      <td>1 GODZ</td>
+      <td>{{mytime | date:'shortDate'}}</td>
+      <td>
+          <div class="form-group">
+              <select class="form-control" id="project" required formControlName="studentId">
+                <option *ngFor="let project of projects" name="project"
+                 [ngValue]="project.id">
+                 {{project.projectName}}</option>
+              </select>
               </div>
-<!-- </div> -->
+      </td>
+      <td>
+          <input class="form-control"
+          placeholder="Szukaj użytkownika"> 
+      </td>
+      <td>
+        <button class="btn btn-success btn-set">
+        <i class="fa fa-check" aria-hidden="true"></i> 
+      </button></td>
+    </tr>
+  </tbody>
+</table>
+</form>
+</div>
+  
+<h4 class="alert-heading mt-4">Zatwierdzone na dzień {{starttime | date}}</h4>
+  
+<div class="alert alert-light mt-4">
+  <table class="table col-12 text-center">
+      <thead class="table-light col-12">
+        <tr>
+            <th scope="col">OD / DO</th>
+            <th scope="col">CZAS PRACY</th>
+            <th scope="col">DATA</th>
+            <th scope="col">PROJEKT</th>
+            <th scope="col">OPIS</th>
+            <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{starttime | date:'shortTime'}} - {{endtime | date:'shortTime'}}</td>
+          <td>1 GODZ</td>
+          <td>{{mytime | date:'shortDate'}}</td>
+          <td>
+            {{task}}
+          </td>
+          <td>
+              {{task}}
+          </td>
+          <td>
+              <button class="btn btn-danger btn-set">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+        
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
 import { ProjectService } from 'src/app/_services/project.service';
+import { Project } from 'src/app/_models/project';
 
 @Component( {
   selector: 'app-picktime-dashboard',
@@ -9,21 +10,19 @@ import { ProjectService } from 'src/app/_services/project.service';
 })
 
 export class PicktimeDashboardComponent implements OnInit {
+  projects: Project[];
+
   @Input() mytime: Date = new Date();
   starttime: Date = new Date();
   endtime: Date = new Date();
   name: string;
-  czas_pracy: Date;
+  czas_pracy: number;
 
   constructor(private authService: AuthService, private projectService: ProjectService) { }
 
   ngOnInit() {
     this.getName();
-  }
-
-  substract_time() {
-    this.czas_pracy.setHours(this.endtime.getHours() - this.starttime.getHours());
-    this.czas_pracy.setMinutes(this.endtime.getMinutes() - this.starttime.getMinutes());
+    this.loadProjects();
   }
 
   update(timeVal: Date) {
@@ -37,5 +36,11 @@ export class PicktimeDashboardComponent implements OnInit {
 
   getName() {
     this.name = this.authService.decodedToken.family_name;
+  }
+
+  loadProjects() {
+    this.projectService.getProjects().subscribe((projectList: Project[]) => {
+      this.projects = projectList;
+    });
   }
 }
