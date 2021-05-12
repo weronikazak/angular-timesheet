@@ -24,7 +24,7 @@
     "alertifyjs": "^1.11.4",
     "bootstrap": "^4.3.1",
     "bootswatch": "^4.3.1",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "ng-pick-datetime": "^6.0.16",
