@@ -13,7 +13,6 @@ import { ProjectListAllComponent } from './app/projects/project-list-all/project
 import { ProjectDetailResolver } from './app/_resolvers/project-detail.resolver';
 import { AddProjectComponent } from './app/projects/add-project/add-project.component';
 import { ProjectDetailComponent } from './app/profile/project-detail/project-detail.component';
-import { CompanyListComponent } from './app/companies/company-list/company-list.component';
 import { GroupCreateComponent } from './app/group/group-create/group-create.component';
 
 
@@ -32,7 +31,7 @@ export const appRoutes: Routes = [
             { path: 'group/add', component: GroupCreateComponent},
             { path: 'projects/all', component: ProjectListAllComponent},
             { path: 'projects/add', component: AddProjectComponent},
-            { path: 'companies', component: CompanyListComponent},
+            // { path: 'companies', component: CompanyListComponent},
             // { path: 'projects/user', component: AddProjectComponent},
             { path: 'projects/:id', component: ProjectDetailComponent, resolve: {project: ProjectDetailResolver}},
             { path: 'members/:id', component: UserDetailComponent, resolve: {user: UserDetailResolver}},

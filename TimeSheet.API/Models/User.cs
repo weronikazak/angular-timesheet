@@ -15,6 +15,6 @@ namespace TimeSheet.API.Data
         public DateTime LastActive { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
-        public ICollection<Worker> Workers { get; set; }
+        public ICollection<Raports> Raports { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,28 +26,6 @@ namespace TimeSheet.API.Data
             _context.Remove(entity);
         }
 
-        // public async Task<Group> GetWorkerGroups(int workerId) {
-        //      return await _context.Groups.Where(u => u.Members.Contains(u.)).ToListAsync();
-        // }
-
-        public async Task<ICollection<Project>> GetProjectsForGroup(int groupId) {
-            return await _context.Projects
-                .Where(u => u.Id == groupId).ToListAsync();
-        }
-
-        public async Task<ICollection<Project>> GetProjectsForCompany(int companyId) {
-            return await _context.Projects
-                .Where(u => u.CompanyId == companyId)
-                // .OrderByDescending(u => u.ProjectStart)
-                .ToListAsync();
-        }
-
-        // public async Task<ICollection<User>> GetUsersForGroup(int groupId) {
-        //     //var users = from _context.Users where groupId == 1;
-        //     //return await _context.Users.Include(u => u.Groups);
-
-        //     return await _context.Users.FindAsync(u => u.);
-        // }
 
         public async Task<IEnumerable<Company>> GetCompanies()
         {
@@ -103,6 +82,49 @@ namespace TimeSheet.API.Data
         {
             // 0 means that nothing was saved in db
            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<IEnumerable<Project>> GetProjectsForGroup(int groupId)
+        {
+                return await _context.Projects
+                .Where(u => u.Id == groupId).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Project>> GetProjectsForCompany(int companyId)
+        {
+            return await _context.Projects
+                .Where(u => u.CompanyId == companyId)
+                // .OrderByDescending(u => u.ProjectStart)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Raports>> GetAllRaports()
+        {
+            return await _context.Raports.Include(u => u.User).Include(u => u.Project).Include(u => u.Role)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Raports>> GetRaportsForToday()
+        {
+            return await _context.Raports.Include(u => u.User).Include(u => u.Project).Include(u => u.Role)
+                .Where(u => u.WorkFrom.Date == new DateTime().Date).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Raports>> GetRaportsForTodayForUser(int userId)
+        {
+            return await _context.Raports.Include(u => u.User).Include(u => u.Project).Include(u => u.Role)
+                .Where(u => u.WorkFrom.Date == new DateTime() && u.UserId == userId).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Raports>> GetRaportsForProject(int projectId)
+        {
+            return await _context.Raports.Include(u => u.User).Include(u => u.Project).Include(u => u.Role)
+                .Where(u => u.ProjectId == projectId).ToListAsync();
+        }
+
+        public async Task<Raports> GetRaport(int raportId)
+        {
+            return await _context.Raports.FirstOrDefaultAsync(u => u.Id == raportId);
         }
     }
 }

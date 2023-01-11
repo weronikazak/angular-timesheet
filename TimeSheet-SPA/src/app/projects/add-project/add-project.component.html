@@ -15,7 +15,6 @@
             placeholder="Szukaj klienta">
             </div>
 
-            <app-add-company (addProject)="addClient" *ngIf="addClient"></app-add-company>
 
             <div class="btn-group mt-4" role="group" *ngIf="!addClient" >
                 <button class="btn btn-lg btn-primary" (click)="addClient=true" type="submit">Dodaj klienta</button>

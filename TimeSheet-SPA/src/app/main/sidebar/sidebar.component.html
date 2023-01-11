@@ -11,34 +11,52 @@
             </a>
 
           </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/profile']">
-              <i class="fa fa-users" aria-hidden="true"></i>
-              Profil
-            </a>
-          </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" [routerLink]="['/members']" routerLinkActive="router-link-active">
-              <i class="fa fa-user-circle" aria-hidden="true"></i>
-              Użytkownicy
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              Create User
             </a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="#" [routerLink]="['/group/add']" routerLinkActive="router-link-active">
-              <i class="fa fa-address-card-o" aria-hidden="true"></i>
-              Twoje projekty
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              Create Admin
             </a>
-          </li>
+          </li> -->
+
+          <li class="nav-item">
+              <a class="nav-link" href="#" [routerLink]="['/projects/all']" routerLinkActive="router-link-active">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                All Timesheet
+              </a>
+            </li>
+
           <li class="nav-item">
             <a class="nav-link" href="#" [routerLink]="['/projects/all']" routerLinkActive="router-link-active">
-              <i class="fa fa-address-book-o" aria-hidden="true"></i>
-              Wszystkie projekty
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              Assign Roles
             </a>
           </li>
+
           <li class="nav-item">
-              <a class="nav-link" href="#" [routerLink]="['/companies']" routerLinkActive="router-link-active">
-              <i class="fa fa-building-o" aria-hidden="true"></i>
-              Klienci
+            <a class="nav-link" [routerLink]="['/profile']">
+              <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+              All Roles
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/profile']">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              Add project
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/profile']">
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+              Timesheets
             </a>
           </li>
         </ul>

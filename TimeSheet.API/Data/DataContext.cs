@@ -10,14 +10,14 @@ namespace TimeSheet.API.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Company> Companies { get; set; }
-        public DbSet<Worker> Workers { get; set; }
+        public DbSet<Raports> Raports { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Worker>()
+            modelBuilder.Entity<Raports>()
                 .HasOne(u => u.User)
-                .WithMany(u => u.Workers)
+                .WithMany(u => u.Raports)
                 .HasForeignKey(u => u.UserId);
 
             modelBuilder.Entity<Company>()
@@ -25,14 +25,14 @@ namespace TimeSheet.API.Data
                 .WithOne(u => u.Company)
                 .HasForeignKey(u => u.CompanyId);
 
-            modelBuilder.Entity<Worker>()
+            modelBuilder.Entity<Raports>()
                 .HasOne(u => u.Role)
-                .WithMany(u => u.Workers)
+                .WithMany(u => u.Raports)
                 .HasForeignKey( u=> u.RoleId);
 
-            modelBuilder.Entity<Worker>()
+            modelBuilder.Entity<Raports>()
                 .HasOne(u => u.Project)
-                .WithMany(u => u.Workers)
+                .WithMany(u => u.Raports)
                 .HasForeignKey(u => u.ProjectId);
 
             

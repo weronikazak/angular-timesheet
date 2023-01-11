@@ -6,6 +6,6 @@ namespace TimeSheet.API.Models
     {
         public int Id { get; set; }
         public string RoleName { get; set; }
-        public ICollection<Worker> Workers { get; set; }
+        public ICollection<Raports> Raports { get; set; }
     }
 }
